@@ -255,6 +255,7 @@ public class ControllerAuthorization {
 
     @FXML
     void initialize() {
+
         errorText.setVisible(false);
 
         passwordField.textProperty().addListener( (ov,oldV,newV) -> {

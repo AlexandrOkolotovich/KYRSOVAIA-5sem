@@ -238,3 +238,20 @@
 .buttonPlace:hover{
     -fx-background-color: #52cb2d;
 }
+
+.buttonControl{
+    -fx-background-color :   #00ad5f;
+}
+
+.buttonControl:hover{
+    -fx-background-color : #3d814e;
+}
+
+.buttonControl:pressed{
+    -fx-background-color :  #16e279;
+}
+
+.buttonControl:focused{
+    -fx-background-color:  #16e279;
+    -fx-border-insets:0,1,0;
+}

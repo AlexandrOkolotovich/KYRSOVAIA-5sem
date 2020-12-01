@@ -58,63 +58,62 @@
                   <Insets left="65.0" top="-10.0" />
                </VBox.margin>
             </ImageView>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Пользователь" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр всех пользователей" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Добавить фильм" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Ассортимент фильмов" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Составить расписание" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр расписания" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Оценка убытков правообладателей" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="О кинотеатре" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <ImageView fitHeight="186.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resource/img/useradmin.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="45.0" top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Alex">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="120.0" top="10.0" />
+               </VBox.margin>
+            </Label>
          </children>
       </VBox>
       <StackPane layoutX="284.0" layoutY="31.0" prefHeight="715.0" prefWidth="994.0">
          <children>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <TextArea layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <Label layoutX="43.0" layoutY="34.0" prefHeight="28.0" prefWidth="161.0" text="О кинотеатре">
-                           <font>
-                              <Font name="Verdana" size="22.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="214.0" fitWidth="369.0" layoutX="555.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-04.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="282.0" fitWidth="473.0" layoutX="39.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-03.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="281.0" fitWidth="409.0" layoutX="556.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-5.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="261.0" fitWidth="484.0" layoutX="46.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-02.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
             <Pane prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <GridPane layoutX="37.0" layoutY="102.0" prefHeight="598.0" prefWidth="930.0">
@@ -1071,6 +1070,153 @@
                         <TableColumn prefWidth="71.466796875" text="Цена" />
                     </columns>
                   </TableView>
+               </children>
+            </Pane>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <TextArea layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="43.0" layoutY="34.0" prefHeight="28.0" prefWidth="161.0" text="О кинотеатре">
+                           <font>
+                              <Font name="Verdana" size="22.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="214.0" fitWidth="369.0" layoutX="555.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-04.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="282.0" fitWidth="473.0" layoutX="39.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-03.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="281.0" fitWidth="409.0" layoutX="556.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-5.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="261.0" fitWidth="484.0" layoutX="46.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-02.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="574.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                     <children>
+                        <Label fx:id="dateTime" layoutX="97.0" layoutY="14.0" prefHeight="53.0" prefWidth="246.0" text="2020-12-01 19:41:25" textFill="#155064">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                        <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Текущее время" textAlignment="CENTER" textFill="#155064">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/calendar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="80.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                     <children>
+                        <Label fx:id="dateTime1" layoutX="152.0" layoutY="14.0" prefHeight="53.0" prefWidth="44.0" text="600" textFill="#155064">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                        <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Общая сумма" textAlignment="CENTER" textFill="#155064">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/money.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="dateTime11" layoutX="202.0" layoutY="14.0" prefHeight="53.0" prefWidth="81.0" text="руб." textFill="#155064">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="215.0" layoutY="332.0" prefHeight="143.0" prefWidth="488.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                     <children>
+                        <Label fx:id="dateTime2" layoutX="139.0" layoutY="14.0" prefHeight="53.0" prefWidth="308.0" text="okolotovich2000@mail.ru" textFill="#155064">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Line endX="349.79998779296875" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                        <Label layoutX="159.0" layoutY="83.0" prefHeight="53.0" prefWidth="232.0" text="Электронная почта" textAlignment="CENTER" textFill="#155064">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/mail.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="604.0" layoutY="530.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                     <children>
+                        <Label fx:id="dateTime21" layoutX="108.0" layoutY="10.0" prefHeight="53.0" prefWidth="203.0" text="+375298065248" textFill="#155064">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Line endX="223.7999267578125" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-17.79998779296875" startY="-18.0" />
+                        <Label layoutX="125.0" layoutY="79.0" prefHeight="53.0" prefWidth="203.0" text="Номер телефона" textAlignment="CENTER" textFill="#155064">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/numtel.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
