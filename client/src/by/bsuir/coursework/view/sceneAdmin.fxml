@@ -58,7 +58,7 @@
                   <Insets left="65.0" top="-10.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Пользователь" textFill="WHITE">
+            <Button fx:id="userButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Пользователь" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -66,31 +66,31 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр всех пользователей" textFill="WHITE">
+            <Button fx:id="listUsersButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр всех пользователей" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Добавить фильм" textFill="WHITE">
+            <Button fx:id="addMovieButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Добавить фильм" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Ассортимент фильмов" textFill="WHITE">
+            <Button fx:id="listMovieButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Ассортимент фильмов" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Составить расписание" textFill="WHITE">
+            <Button fx:id="makeScheduleButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Составить расписание" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр расписания" textFill="WHITE">
+            <Button fx:id="viewScheduleButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Просмотр расписания" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Оценка убытков правообладателей" textFill="WHITE">
+            <Button fx:id="estimateLossesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="Оценка убытков правообладателей" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="О кинотеатре" textFill="WHITE">
+            <Button fx:id="cinemaInfoButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleCliks" prefHeight="38.0" prefWidth="284.0" styleClass="buttonControl" text="О кинотеатре" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font></Button>
@@ -114,7 +114,7 @@
       </VBox>
       <StackPane layoutX="284.0" layoutY="31.0" prefHeight="715.0" prefWidth="994.0">
          <children>
-            <Pane prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="listUsersPane" prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <GridPane layoutX="37.0" layoutY="102.0" prefHeight="598.0" prefWidth="930.0">
                     <columnConstraints>
@@ -175,7 +175,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
                      <font>
@@ -208,7 +208,7 @@
                   <Button layoutX="666.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать расписание" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="placesCinemaPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="366.0" layoutY="7.0" text="Места в зале" textFill="#3ab56b">
                      <font>
@@ -794,7 +794,7 @@
                   </Text>
                </children>
             </Pane>
-            <Pane prefHeight="723.0" prefWidth="994.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="addMoviePane" prefHeight="723.0" prefWidth="994.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="365.0" layoutY="36.0" text="Добавить фильм" textFill="#3ab56b">
                      <font>
@@ -981,7 +981,7 @@
                   <Button layoutX="463.0" layoutY="654.0" mnemonicParsing="false" styleClass="buttonAction" text="Добавить" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="337.0" layoutY="8.0" text="Список фильмов" textFill="#3ab56b">
                      <font>
@@ -1016,7 +1016,7 @@
                   <Button layoutX="517.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать фильм" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="makeSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="291.0" layoutY="19.0" text="Составить расписание" textFill="#3ab56b">
                      <font>
@@ -1072,7 +1072,7 @@
                   </TableView>
                </children>
             </Pane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <ScrollPane fx:id="cinemaInfoPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
                      <children>
@@ -1125,7 +1125,8 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+            <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
+            <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">
                      <font>
