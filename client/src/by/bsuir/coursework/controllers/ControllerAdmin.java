@@ -7,6 +7,7 @@ import by.bsuir.coursework.entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -104,6 +105,32 @@ public class ControllerAdmin {
     @FXML
     private TableColumn<UserInf, String> password;
 
+    @FXML
+    private TextField searchField;
+
+
+    @FXML
+    private Label userMail;
+
+    @FXML
+    private Label userTel;
+
+    @FXML
+    private Label userLogin;
+
+    @FXML
+    private TextArea paragraph1;
+
+    @FXML
+    private TextArea paragraph2;
+
+    @FXML
+    private TextArea paragraph3;
+
+    @FXML
+    private TextArea paragraph4;
+
+
     public ControllerAdmin() { }
 
     @FXML
@@ -143,12 +170,32 @@ public class ControllerAdmin {
     }
 
     @FXML
+    void searchUser(ActionEvent event) {
+        FilteredList<UserInf> filterUsers;
+        filterUsers = new FilteredList<>(CollectionUsers.getInstance().getUsers(), e->true);
+        searchField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterUsers.setPredicate((UserInf user)->{
+
+                String newVal = newValue.toLowerCase();
+                return  user.getSurname().toLowerCase().contains(newVal)
+                        || user.getName().toLowerCase().contains(newVal)
+                        || user.getLogin().toLowerCase().contains(newVal)
+                        || user.getTel().toLowerCase().contains(newVal)
+                        || user.getEmail().toLowerCase().contains(newVal)
+                        || user.getPassword().toLowerCase().contains(newVal);
+
+            });
+            userTable.setItems(filterUsers);
+        });
+    }
+
+    @FXML
     void initialize() {
-        //Connect.send("adminPanel");
 
         initClock();
-
+        initUserInfo();
         userInTable();
+        initCinemaInfo();
 
         closeButton.setOnMouseClicked(mouseEvent -> {
             Stage stages = (Stage) closeButton.getScene().getWindow();
@@ -163,13 +210,19 @@ public class ControllerAdmin {
     }
 
     private void initClock() {
-
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             dateTime.setText(LocalDateTime.now().format(formatter));
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
+    }
+
+    private void initUserInfo(){
+        userLogin.setText(Connect.get());
+        userMail.setText(Connect.get());
+        userTel.setText(Connect.get());
+
     }
 
     private void userInTable() {
@@ -183,6 +236,24 @@ public class ControllerAdmin {
         password.setCellValueFactory(new PropertyValueFactory<>("password"));
         userTable.setItems(CollectionUsers.getInstance().getUsers());
     }
+
+    private void initCinemaInfo(){
+        String pf1;
+        String pf2;
+        String pf3;
+        String pf4;
+
+        pf1 = Connect.get();//нужно сделать на сервере отправку
+        pf2 = Connect.get();
+        pf3 = Connect.get();
+        pf4 = Connect.get();
+
+        paragraph1.setText(pf1);
+        paragraph2.setText(pf2);
+        paragraph3.setText(pf3);
+        paragraph4.setText(pf4);
+    }
+
 
 
 

@@ -1,14 +1,11 @@
 package by.bsuir.coursework.collections;
 
 import by.bsuir.coursework.connection.Connect;
-import by.bsuir.coursework.entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 public final class CollectionUsers {
 

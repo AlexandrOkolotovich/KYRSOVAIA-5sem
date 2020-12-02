@@ -21,6 +21,9 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         String login = get();
         String password = get();
         String role = null;
+        String userLogin = null;
+        String userEmail = null;
+        String userTel = null;
 
         DataBaseHandler handler = new DataBaseHandler();
         User user = new User();
@@ -34,6 +37,9 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
             while (result.next()) {
                 counter++;
                 role = result.getNString(8);
+                userLogin = result.getNString(4);
+                userTel = result.getNString(5);
+                userEmail = result.getNString(6);
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -42,6 +48,9 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         if(counter>=1){
             send(role);
             System.out.println(role);
+            send(userLogin);
+            send(userEmail);
+            send(userTel);
         }
         else {
             send("incorrectly");

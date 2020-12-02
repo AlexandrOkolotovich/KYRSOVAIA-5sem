@@ -102,7 +102,7 @@
                   <Insets left="45.0" top="20.0" />
                </VBox.margin>
             </ImageView>
-            <Label text="Alex">
+            <Label fx:id="userLogin" text="Alex">
                <font>
                   <Font size="18.0" />
                </font>
@@ -793,7 +793,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
                      <children>
-                        <TextArea layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
+                        <TextArea fx:id="paragraph1" layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -813,7 +813,7 @@
                               <Image url="@../resource/img/img-03.jpg" />
                            </image>
                         </ImageView>
-                        <TextArea layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
+                        <TextArea fx:id="paragraph2" layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -823,7 +823,7 @@
                               <Image url="@../resource/img/img-5.jpg" />
                            </image>
                         </ImageView>
-                        <TextArea layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
+                        <TextArea fx:id="paragraph3" layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -833,7 +833,7 @@
                               <Image url="@../resource/img/img-02.jpg" />
                            </image>
                         </ImageView>
-                        <TextArea layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
+                        <TextArea fx:id="paragraph4" layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -1074,7 +1074,7 @@
                                     <Image url="@../resource/img/search.png" />
                                  </image>
                               </ImageView>
-                              <TextField prefHeight="31.0" prefWidth="617.0" promptText="Поиск">
+                              <TextField fx:id="searchField" onAction="#searchUser" prefHeight="31.0" prefWidth="617.0" promptText="Поиск">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -1160,7 +1160,7 @@
                   </Pane>
                   <Pane layoutX="215.0" layoutY="332.0" prefHeight="143.0" prefWidth="488.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
                      <children>
-                        <Label fx:id="dateTime2" layoutX="139.0" layoutY="14.0" prefHeight="53.0" prefWidth="308.0" text="okolotovich2000@mail.ru" textFill="#155064">
+                        <Label fx:id="userMail" layoutX="139.0" layoutY="14.0" prefHeight="53.0" prefWidth="308.0" text="admin@mail.ru" textFill="#155064">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -1180,7 +1180,7 @@
                   </Pane>
                   <Pane layoutX="604.0" layoutY="530.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
                      <children>
-                        <Label fx:id="dateTime21" layoutX="108.0" layoutY="10.0" prefHeight="53.0" prefWidth="203.0" text="+375298065248" textFill="#155064">
+                        <Label fx:id="userTel" layoutX="108.0" layoutY="10.0" prefHeight="53.0" prefWidth="203.0" text="+375111111111" textFill="#155064">
                            <font>
                               <Font size="26.0" />
                            </font>

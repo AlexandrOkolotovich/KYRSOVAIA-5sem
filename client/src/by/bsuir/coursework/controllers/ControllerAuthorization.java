@@ -189,7 +189,7 @@ public class ControllerAuthorization {
             Connect.send("registration");
             User user = new User(surname, name, login, tel, email, password, Role.USER);
             Connect.send(user);
-
+            openScene("/by/bsuir/coursework/view/sceneUser.fxml");
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");

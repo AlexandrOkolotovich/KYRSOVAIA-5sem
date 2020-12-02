@@ -69,10 +69,6 @@ public class MonoThreadClientHandler implements Runnable {
                         role = "null";
                         break;
                     }
-                    /*case "adminPanel":{
-                        AdminCommand.getUsersData();
-                        break;
-                    }*/
                 }
                 switch (role){
                     case "ADMIN":{
@@ -104,11 +100,13 @@ public class MonoThreadClientHandler implements Runnable {
 
         DataBaseHandler handler = new DataBaseHandler();
         String users = handler.getUsers();
+
         try {
             send(users);
 
             while (!menu.equals( "back" )) {
                 menu = get();
+                System.out.println(menu);
 
                 switch (Objects.requireNonNull(menu)){
                     case "deleteUser":{
