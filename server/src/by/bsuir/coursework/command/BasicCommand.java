@@ -16,7 +16,7 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         super(client);
     }
 
-    public static void authorization() throws IOException {
+    public static String authorization() throws IOException {
 
         String login = get();
         String password = get();
@@ -46,6 +46,8 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         else {
             send("incorrectly");
         }
+
+        return role;
     }
 
     public static void registration() {

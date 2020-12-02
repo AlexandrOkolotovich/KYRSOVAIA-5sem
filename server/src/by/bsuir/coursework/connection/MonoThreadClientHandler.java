@@ -3,12 +3,15 @@ package by.bsuir.coursework.connection;
 import by.bsuir.coursework.command.AdminCommand;
 import by.bsuir.coursework.command.BasicCommand;
 import by.bsuir.coursework.command.CheckCommand;
+import by.bsuir.coursework.database.DataBaseHandler;
+import by.bsuir.coursework.database.Role;
 
 import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Objects;
 
 public class MonoThreadClientHandler implements Runnable {
     private static DataInputStream ois;
@@ -26,6 +29,7 @@ public class MonoThreadClientHandler implements Runnable {
 
     public static void send(String message) throws IOException {
         oos.writeUTF(message);
+        System.out.println("Отправил: " + message);
         oos.flush();
     }
 
@@ -42,6 +46,8 @@ public class MonoThreadClientHandler implements Runnable {
         try{
 
             while (true) {
+                String role = null;
+
                 String command = get();
                 System.out.println("Я принял: " + command);
                 if(command == null || command.equals("exit")){
@@ -49,19 +55,29 @@ public class MonoThreadClientHandler implements Runnable {
                 }
                 switch (command){
                     case "authorization":{
-                        BasicCommand.authorization();
+                        role = BasicCommand.authorization();
                         break;
                     }
                     case "registration":{
                         BasicCommand.registration();
+                        role = "USER";
                         break;
                     }
                     case "loginExist":{
                         CheckCommand.loginExit();
                         break;
                     }
-                    case "adminPanel":{
+                    /*case "adminPanel":{
                         AdminCommand.getUsersData();
+                        break;
+                    }*/
+                }
+                switch (Objects.requireNonNull(role)){
+                    case "ADMIN":{
+                        openMenuAdmin();
+                        break;
+                    }
+                    case "USER":{
                         break;
                     }
                 }
@@ -73,6 +89,16 @@ public class MonoThreadClientHandler implements Runnable {
             clientDialog.close();
 
             System.out.println("Closing connections & channels - DONE.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openMenuAdmin(){
+        DataBaseHandler handler = new DataBaseHandler();
+        String users = handler.getUsers();
+        try {
+            send(users);
         } catch (IOException e) {
             e.printStackTrace();
         }
