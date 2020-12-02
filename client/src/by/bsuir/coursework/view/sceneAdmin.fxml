@@ -114,67 +114,6 @@
       </VBox>
       <StackPane layoutX="284.0" layoutY="31.0" prefHeight="715.0" prefWidth="994.0">
          <children>
-            <Pane fx:id="listUsersPane" prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <GridPane layoutX="37.0" layoutY="102.0" prefHeight="598.0" prefWidth="930.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="340.79999389648435" minHeight="0.0" prefHeight="42.99997863769531" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="700.8" minHeight="10.0" prefHeight="555.0000213623047" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TableView prefHeight="555.0" prefWidth="952.0" GridPane.rowIndex="1">
-                          <columns>
-                            <TableColumn prefWidth="41.066741943359375" text="ID" />
-                            <TableColumn prefWidth="109.333251953125" text="Фамилия" />
-                              <TableColumn prefWidth="180.80001831054688" text="Имя" />
-                              <TableColumn prefWidth="125.5999755859375" text="Логин" />
-                              <TableColumn prefWidth="157.86663818359375" text="Номер телефона" />
-                              <TableColumn prefWidth="168.53338623046875" text="Электронная почта" />
-                              <TableColumn prefWidth="141.333251953125" text="Пароль" />
-                          </columns>
-                        </TableView>
-                        <HBox prefHeight="27.0" prefWidth="930.0">
-                           <children>
-                              <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resource/img/search.png" />
-                                 </image>
-                              </ImageView>
-                              <TextField prefHeight="31.0" prefWidth="617.0" promptText="Поиск">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" styleClass="buttonLogin" text="Удалить">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="163.0" styleClass="buttonLogin" text="Редактировать">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                  </GridPane>
-                  <Label layoutX="392.0" layoutY="23.0" text="Пользователи" textAlignment="CENTER" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
             <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
@@ -1126,6 +1065,67 @@
               </content>
             </ScrollPane>
             <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
+            <Pane fx:id="listUsersPane" prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <GridPane layoutX="37.0" layoutY="102.0" prefHeight="598.0" prefWidth="930.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="340.79999389648435" minHeight="0.0" prefHeight="42.99997863769531" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="700.8" minHeight="10.0" prefHeight="555.0000213623047" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TableView fx:id="userTable" prefHeight="555.0" prefWidth="952.0" GridPane.rowIndex="1">
+                          <columns>
+                            <TableColumn fx:id="id" prefWidth="41.066741943359375" text="ID" />
+                            <TableColumn fx:id="surname" prefWidth="109.333251953125" text="Фамилия" />
+                              <TableColumn fx:id="name" prefWidth="180.80001831054688" text="Имя" />
+                              <TableColumn fx:id="login" prefWidth="125.5999755859375" text="Логин" />
+                              <TableColumn fx:id="tel" prefWidth="157.86663818359375" text="Номер телефона" />
+                              <TableColumn fx:id="email" prefWidth="168.53338623046875" text="Электронная почта" />
+                              <TableColumn fx:id="password" prefWidth="141.333251953125" text="Пароль" />
+                          </columns>
+                        </TableView>
+                        <HBox prefHeight="27.0" prefWidth="930.0">
+                           <children>
+                              <ImageView fitHeight="27.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resource/img/search.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField prefHeight="31.0" prefWidth="617.0" promptText="Поиск">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" styleClass="buttonLogin" text="Удалить">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="163.0" styleClass="buttonLogin" text="Редактировать">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <Label layoutX="392.0" layoutY="23.0" text="Пользователи" textAlignment="CENTER" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">

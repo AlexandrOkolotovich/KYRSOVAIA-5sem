@@ -1,5 +1,9 @@
 package by.bsuir.coursework.database;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.*;
 
 public class DataBaseHandler extends Configs {
@@ -66,6 +70,46 @@ public class DataBaseHandler extends Configs {
         }
         return resSet;
     }
+
+    public String getUsers() {
+        User user;
+        JSONObject userJson;
+        JSONArray users = new JSONArray();
+        try {
+
+            String select = "SELECT * FROM "+Const.USER_TABLE;
+            PreparedStatement prep1 = getDbConnection().prepareStatement( select );
+            ResultSet rs = prep1.executeQuery();
+            while (rs.next()){
+
+                user = new User();
+                user.setId(rs.getInt(1));
+                user.setSurname(rs.getString(2));
+                user.setName(rs.getString(3));
+                user.setLogin(rs.getString(4));
+                user.setTel(rs.getString(5));
+                user.setEmail(rs.getString(6));
+                user.setPassword(rs.getString(7));
+
+                userJson = new JSONObject();
+                userJson.put("id", user.getId());
+                userJson.put("surname", user.getSurname());
+                userJson.put("name", user.getName());
+                userJson.put("login", user.getLogin());
+                userJson.put("tel", user.getTel());
+                userJson.put("email", user.getEmail());
+                userJson.put("password", user.getPassword());
+
+                users.put( userJson );
+            }
+
+        } catch (SQLException | ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return users.toString();
+    }
+
 
 
 }

@@ -1,13 +1,13 @@
 package by.bsuir.coursework.controllers;
 
+import by.bsuir.coursework.connection.Connect;
+import by.bsuir.coursework.entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -77,8 +77,31 @@ public class ControllerAdmin {
     @FXML
     private Pane estimateLossesPane;
 
-    public ControllerAdmin() {
-    }
+    @FXML
+    private TableView<User> userTable;
+
+    @FXML
+    private TableColumn<User, Integer> id;
+
+    @FXML
+    private TableColumn<User, String> surname;
+
+    @FXML
+    private TableColumn<User, String> name;
+
+    @FXML
+    private TableColumn<User, String> login;
+
+    @FXML
+    private TableColumn<User, String> tel;
+
+    @FXML
+    private TableColumn<User, String> email;
+
+    @FXML
+    private TableColumn<User, String> password;
+
+    public ControllerAdmin() { }
 
     @FXML
     void handleCliks(ActionEvent event) {
@@ -110,6 +133,8 @@ public class ControllerAdmin {
 
     @FXML
     void initialize() {
+        Connect.send("adminPanel");
+
         initClock();
 
         closeButton.setOnMouseClicked(mouseEvent -> {
@@ -133,4 +158,6 @@ public class ControllerAdmin {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
     }
+
+
 }

@@ -1,5 +1,6 @@
 package by.bsuir.coursework.connection;
 
+import by.bsuir.coursework.command.AdminCommand;
 import by.bsuir.coursework.command.BasicCommand;
 import by.bsuir.coursework.command.CheckCommand;
 
@@ -55,8 +56,12 @@ public class MonoThreadClientHandler implements Runnable {
                         BasicCommand.registration();
                         break;
                     }
-                    case  "loginExist":{
+                    case "loginExist":{
                         CheckCommand.loginExit();
+                        break;
+                    }
+                    case "adminPanel":{
+                        AdminCommand.getUsersData();
                         break;
                     }
                 }

@@ -67,31 +67,6 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
             DataBaseHandler handler = new DataBaseHandler();
             handler.signUpUser(surname, name, login, tel, email, password, role);
 
-            /*if (!user.equals("back")) {
-                JSONObject userJson = new JSONObject(user);
-                int id = IdGenerator.getInstance("user").getNextId();
-
-                String firstName = userJson.getString("firstName");
-                String lastName = userJson.getString("lastName");
-                String email = userJson.getString("email");
-                String userName = userJson.getString("userName");
-                String password = userJson.getString("password");
-
-                DataBaseHandler handler = new DataBaseHandler();
-
-                String signIn = handler.checkUser(userName);
-                if(signIn.equals(userName)){
-                    out.write("exist" + '\n');
-                    out.flush();
-                    System.out.println("я отправил: " + "exist");
-                }
-                else {
-                    String sign = handler.signUpUser(firstName, lastName, email, userName, password);
-                    out.write(sign + '\n');
-                    out.flush();
-                    System.out.println("я отправил регистрацию: " + sign);
-                }
-            }*/
         }
     }
 }
