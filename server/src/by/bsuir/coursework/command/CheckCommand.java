@@ -14,7 +14,7 @@ public abstract class CheckCommand extends MonoThreadClientHandler {
         super(client);
     }
 
-    public static void loginExit() throws IOException {
+    public static void loginExist() throws IOException {
         String login = get();
 
         DataBaseHandler handler = new DataBaseHandler();

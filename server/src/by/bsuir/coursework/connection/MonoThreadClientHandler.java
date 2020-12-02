@@ -64,7 +64,8 @@ public class MonoThreadClientHandler implements Runnable {
                         break;
                     }
                     case "loginExist":{
-                        CheckCommand.loginExit();
+                        CheckCommand.loginExist();
+                        role = "null";
                         break;
                     }
                     /*case "adminPanel":{
@@ -72,12 +73,15 @@ public class MonoThreadClientHandler implements Runnable {
                         break;
                     }*/
                 }
-                switch (Objects.requireNonNull(role)){
+                switch (role){
                     case "ADMIN":{
                         openMenuAdmin();
                         break;
                     }
                     case "USER":{
+                        break;
+                    }
+                    case "null":{
                         break;
                     }
                 }

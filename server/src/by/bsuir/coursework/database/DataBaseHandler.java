@@ -110,6 +110,15 @@ public class DataBaseHandler extends Configs {
         return users.toString();
     }
 
+    public void deleteUser(Integer userId) throws SQLException, ClassNotFoundException {
+        String deletion = "DELETE FROM " + Const.USER_TABLE+ " WHERE "+ Const.USER_ID +" = ?";
+        PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
+        prSt.setInt(1,userId);
+        prSt.executeUpdate();
+    }
+
+
+
 
 
 }

@@ -1,5 +1,7 @@
 package by.bsuir.coursework.controllers;
 
+import by.bsuir.coursework.collections.CollectionUsers;
+import by.bsuir.coursework.collections.UserInf;
 import by.bsuir.coursework.connection.Connect;
 import by.bsuir.coursework.entity.User;
 import javafx.animation.Animation;
@@ -8,6 +10,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -78,28 +81,28 @@ public class ControllerAdmin {
     private Pane estimateLossesPane;
 
     @FXML
-    private TableView<User> userTable;
+    private TableView<UserInf> userTable;
 
     @FXML
-    private TableColumn<User, Integer> id;
+    private TableColumn<UserInf, Integer> id;
 
     @FXML
-    private TableColumn<User, String> surname;
+    private TableColumn<UserInf, String> surname;
 
     @FXML
-    private TableColumn<User, String> name;
+    private TableColumn<UserInf, String> name;
 
     @FXML
-    private TableColumn<User, String> login;
+    private TableColumn<UserInf, String> login;
 
     @FXML
-    private TableColumn<User, String> tel;
+    private TableColumn<UserInf, String> tel;
 
     @FXML
-    private TableColumn<User, String> email;
+    private TableColumn<UserInf, String> email;
 
     @FXML
-    private TableColumn<User, String> password;
+    private TableColumn<UserInf, String> password;
 
     public ControllerAdmin() { }
 
@@ -133,9 +136,11 @@ public class ControllerAdmin {
 
     @FXML
     void initialize() {
-        Connect.send("adminPanel");
+        //Connect.send("adminPanel");
 
         initClock();
+
+        userInTable();
 
         closeButton.setOnMouseClicked(mouseEvent -> {
             Stage stages = (Stage) closeButton.getScene().getWindow();
@@ -158,6 +163,19 @@ public class ControllerAdmin {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
     }
+
+    private void userInTable() {
+        CollectionUsers.getInstance().fillData();
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        surname.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        login.setCellValueFactory(new PropertyValueFactory<>("login"));
+        tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        userTable.setItems(CollectionUsers.getInstance().getUsers());
+    }
+
 
 
 }

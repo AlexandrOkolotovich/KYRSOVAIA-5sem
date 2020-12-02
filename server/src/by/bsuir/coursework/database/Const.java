@@ -23,7 +23,6 @@ public class Const {
     public static final String MOVIE_DIRECTOR="director";
     public static final String MOVIE_AGE="age";
     public static final String MOVIE_TIME="time";
-    public static final String MOVIE_DURATION="duration";
     public static final String MOVIE_DESCRIPTION="description";
     public static final String USER_RATING="rating";
 
