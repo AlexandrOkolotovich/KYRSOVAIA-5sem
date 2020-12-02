@@ -135,6 +135,14 @@ public class ControllerAdmin {
     }
 
     @FXML
+    void deleteUser(ActionEvent event) {
+        UserInf selectedUser = (UserInf) userTable.getSelectionModel().getSelectedItem();
+        CollectionUsers.getInstance().delete(selectedUser);
+        Connect.send("deleteUser");
+        Connect.send(selectedUser.getId());
+    }
+
+    @FXML
     void initialize() {
         //Connect.send("adminPanel");
 

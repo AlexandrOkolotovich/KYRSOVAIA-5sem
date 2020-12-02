@@ -11,6 +11,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class MonoThreadClientHandler implements Runnable {
@@ -99,11 +100,28 @@ public class MonoThreadClientHandler implements Runnable {
     }
 
     private void openMenuAdmin(){
+        String menu = "work";
+
         DataBaseHandler handler = new DataBaseHandler();
         String users = handler.getUsers();
         try {
             send(users);
-        } catch (IOException e) {
+
+            while (!menu.equals( "back" )) {
+                menu = get();
+
+                switch (Objects.requireNonNull(menu)){
+                    case "deleteUser":{
+                        AdminCommand.deleteUser();
+                    }
+                    case "back": {
+                        menu = "back";
+                        break;
+                    }
+                    default:break;
+                }
+            }
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

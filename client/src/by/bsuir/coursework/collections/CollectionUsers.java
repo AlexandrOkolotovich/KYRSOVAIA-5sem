@@ -54,4 +54,8 @@ public final class CollectionUsers {
         }
 
     }
+
+    public void delete(UserInf user){
+        users.remove(user);
+    }
 }

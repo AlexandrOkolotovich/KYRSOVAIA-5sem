@@ -5,6 +5,8 @@ import by.bsuir.coursework.database.DataBaseHandler;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public abstract class AdminCommand extends MonoThreadClientHandler {
 
@@ -21,4 +23,13 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
             e.printStackTrace();
         }
     }
+
+    public static void deleteUser() throws SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(Objects.requireNonNull(get()));
+
+        DataBaseHandler handler = new DataBaseHandler();
+
+        handler.deleteUser(id);
+    }
+
 }
