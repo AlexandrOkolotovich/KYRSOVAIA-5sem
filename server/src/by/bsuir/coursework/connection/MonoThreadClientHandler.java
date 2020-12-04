@@ -120,18 +120,17 @@ public class MonoThreadClientHandler implements Runnable {
                         }
                         case "updateCinemaInfo":{
                             AdminCommand.updateCInfo();
+                            break;
                         }
                         case "addMovie":{
                             AdminCommand.addMovie();
+                            break;
                         }
                         case "back": {
                             menu = "back";
                             break;
                         }
-                        default:{
-                            menu = "back";
-                            break;
-                        }
+
                     }
                 }
                 else break;

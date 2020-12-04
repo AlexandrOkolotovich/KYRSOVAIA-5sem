@@ -1,6 +1,8 @@
 package by.bsuir.coursework.controllers;
 
+import by.bsuir.coursework.collections.CollectionMovie;
 import by.bsuir.coursework.collections.CollectionUsers;
+import by.bsuir.coursework.collections.MovieInf;
 import by.bsuir.coursework.collections.UserInf;
 import by.bsuir.coursework.connection.Connect;
 import by.bsuir.coursework.entity.Movie;
@@ -143,28 +145,58 @@ public class ControllerAdmin {
     private ImageView backButton;
 
     @FXML
-    private TextField movieTitleField;
+    protected TextField movieTitleField;
 
     @FXML
-    private TextField productionYearField;
+    protected TextField productionYearField;
 
     @FXML
-    private TextField countryField;
+    protected TextField countryField;
 
     @FXML
-    private TextField genreField;
+    protected TextField genreField;
 
     @FXML
-    private TextField directorField;
+    protected TextField directorField;
 
     @FXML
-    private TextField ageField;
+    protected TextField ageField;
 
     @FXML
-    private TextField timeField;
+    protected TextField timeField;
 
     @FXML
-    private TextArea descriptionArea;
+    protected TextArea descriptionArea;
+
+    @FXML
+    private TableView<MovieInf> movieTable;
+
+    @FXML
+    private TableColumn<MovieInf, String> movieTitle;
+
+    @FXML
+    private TableColumn<MovieInf, Integer> productionYear;
+
+    @FXML
+    private TableColumn<MovieInf, String> country;
+
+    @FXML
+    private TableColumn<MovieInf, String> genre;
+
+    @FXML
+    private TableColumn<MovieInf, String> director;
+
+    @FXML
+    private TableColumn<MovieInf, String> age;
+
+    @FXML
+    private TableColumn<MovieInf, Integer> time;
+
+    @FXML
+    private TableColumn<MovieInf, String> description;
+
+    @FXML
+    private TableColumn<MovieInf, Integer> rating;
 
 
     public ControllerAdmin() { }
@@ -388,6 +420,8 @@ public class ControllerAdmin {
             Connect.send(movie);
             Connect.send(description);
 
+            fillInTableNewMovie();
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Успех");
             alert.setHeaderText("Фильм добавлен!");
@@ -398,6 +432,32 @@ public class ControllerAdmin {
             alert.setHeaderText("Фильм не добавлен!");
             alert.showAndWait();
         }
+    }
+
+    void fillInTableNewMovie(){
+        CollectionMovie.getInstance().fillNewData();
+        movieTitle.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+        productionYear.setCellValueFactory(new PropertyValueFactory<>("productionYear"));
+        country.setCellValueFactory(new PropertyValueFactory<>("country"));
+        genre.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        director.setCellValueFactory(new PropertyValueFactory<>("director"));
+        age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        movieTable.setItems(CollectionMovie.getInstance().getMovies());
+    }
+
+    @FXML
+    void clearMovie(ActionEvent event) {
+        movieTitleField.setText("");
+        productionYearField.setText("");
+        countryField.setText("");
+        genreField.setText("");
+        directorField.setText("");
+        ageField.setText("");
+        timeField.setText("");
+        descriptionArea.setText("");
     }
 
     private boolean validateNum(String source) {

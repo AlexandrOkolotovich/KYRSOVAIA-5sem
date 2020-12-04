@@ -54,6 +54,7 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         }
         else {
             send("incorrectly");
+            role = "null";
         }
 
         return role;

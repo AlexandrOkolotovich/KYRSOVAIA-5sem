@@ -798,208 +798,6 @@
                </children>
             </Pane>
             <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
-            <Pane fx:id="addMoviePane" prefHeight="723.0" prefWidth="994.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <Label layoutX="365.0" layoutY="36.0" text="Добавить фильм" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="53.0" layoutY="127.0" text="Введите название фильма">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="movieTitleField" layoutX="264.0" layoutY="122.0" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="56.0" layoutY="186.0" text="О фильме:">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="56.0" layoutY="227.0" prefHeight="261.0" prefWidth="163.0">
-                     <children>
-                        <Label text="Год производства">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Страна">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="21.0" prefWidth="44.0" text="Жанр">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="21.0" prefWidth="71.0" text="Режисёр">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" top="7.0" />
-                           </padding>
-                        </Label>
-                        <Label prefHeight="21.0" prefWidth="71.0" text="Возраст">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="21.0" prefWidth="71.0" text="Время">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox layoutX="264.0" layoutY="227.0" prefHeight="252.0" prefWidth="186.0">
-                     <children>
-                        <TextField fx:id="productionYearField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="countryField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="genreField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="directorField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="ageField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="timeField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
-                  </VBox>
-                  <ImageView fitHeight="380.0" fitWidth="485.0" layoutX="489.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <image>
-                        <Image url="@../resource/img/img-06.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="56.0" layoutY="567.0" prefHeight="31.0" prefWidth="131.0" text="Краткое описание">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextArea fx:id="descriptionArea" layoutX="268.0" layoutY="506.0" prefHeight="122.0" prefWidth="488.0" style="-fx-background-color: #e6e6e6;" wrapText="true">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextArea>
-                  <Button layoutX="463.0" layoutY="654.0" mnemonicParsing="false" onAction="#addMovie" styleClass="buttonAction" text="Добавить" />
-               </children>
-            </Pane>
-            <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <Label layoutX="337.0" layoutY="8.0" text="Список фильмов" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-                  <TableView layoutX="42.0" layoutY="137.0" prefHeight="497.0" prefWidth="910.0">
-                    <columns>
-                      <TableColumn prefWidth="179.19998168945312" text="Фильм" />
-                      <TableColumn prefWidth="67.20004272460938" text="Год " />
-                        <TableColumn prefWidth="101.5999755859375" text="Страна" />
-                        <TableColumn prefWidth="64.0" text="Жанр" />
-                        <TableColumn prefWidth="112.0" text="Режисёр" />
-                        <TableColumn prefWidth="64.79998779296875" text="Возраст" />
-                        <TableColumn prefWidth="66.39996337890625" text="Время" />
-                        <TableColumn prefWidth="178.40020751953125" text="Описание" />
-                        <TableColumn prefWidth="73.5999755859375" text="Оценка" />
-                    </columns>
-                  </TableView>
-                  <HBox layoutX="42.0" layoutY="83.0" prefHeight="34.0" prefWidth="910.0">
-                     <children>
-                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/search.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="32.0" prefWidth="873.0" promptText="Поиск" styleClass="textSecond" />
-                     </children>
-                  </HBox>
-                  <Button layoutX="320.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Удалить фильм" />
-                  <Button layoutX="517.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать фильм" />
-               </children>
-            </Pane>
             <Pane fx:id="listUsersPane" prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <GridPane layoutX="37.0" layoutY="102.0" prefHeight="598.0" prefWidth="930.0">
@@ -1119,6 +917,179 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
+            <Pane fx:id="addMoviePane" prefHeight="723.0" prefWidth="994.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="365.0" layoutY="36.0" text="Добавить фильм" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="53.0" layoutY="127.0" text="Введите название фильма">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="movieTitleField" layoutX="264.0" layoutY="122.0" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="56.0" layoutY="186.0" text="О фильме:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="56.0" layoutY="227.0" prefHeight="261.0" prefWidth="163.0">
+                     <children>
+                        <Label text="Год производства">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Страна">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="44.0" text="Жанр">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="71.0" text="Режисёр">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="7.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="71.0" text="Возраст">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="21.0" prefWidth="71.0" text="Время">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="264.0" layoutY="227.0" prefHeight="252.0" prefWidth="186.0">
+                     <children>
+                        <TextField fx:id="productionYearField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="countryField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="genreField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="directorField" prefHeight="32.0" prefWidth="186.0" promptText="Фамилия" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="ageField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="timeField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </VBox>
+                  <ImageView fitHeight="380.0" fitWidth="485.0" layoutX="489.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../resource/img/img-06.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="56.0" layoutY="567.0" prefHeight="31.0" prefWidth="131.0" text="Краткое описание">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextArea fx:id="descriptionArea" layoutX="268.0" layoutY="506.0" prefHeight="122.0" prefWidth="488.0" style="-fx-background-color: #e6e6e6;" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextArea>
+                  <Button layoutX="463.0" layoutY="654.0" mnemonicParsing="false" onAction="#addMovie" styleClass="buttonAction" text="Добавить" />
+                  <Button layoutX="577.0" layoutY="654.0" mnemonicParsing="false" onAction="#clearMovie" styleClass="buttonAction" text="Очистить">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
             <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">
@@ -1211,6 +1182,40 @@
                         </ImageView>
                      </children>
                   </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="337.0" layoutY="8.0" text="Список фильмов" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="movieTable" layoutX="42.0" layoutY="137.0" prefHeight="497.0" prefWidth="910.0">
+                    <columns>
+                      <TableColumn fx:id="movieTitle" prefWidth="179.19998168945312" text="Фильм" />
+                      <TableColumn fx:id="productionYear" prefWidth="67.20004272460938" text="Год " />
+                        <TableColumn fx:id="country" prefWidth="101.5999755859375" text="Страна" />
+                        <TableColumn fx:id="genre" prefWidth="64.0" text="Жанр" />
+                        <TableColumn fx:id="director" prefWidth="112.0" text="Режисёр" />
+                        <TableColumn fx:id="age" prefWidth="64.79998779296875" text="Возраст" />
+                        <TableColumn fx:id="time" prefWidth="66.39996337890625" text="Время" />
+                        <TableColumn fx:id="description" prefWidth="178.40020751953125" text="Описание" />
+                        <TableColumn fx:id="rating" prefWidth="73.5999755859375" text="Оценка" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutX="42.0" layoutY="83.0" prefHeight="34.0" prefWidth="910.0">
+                     <children>
+                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="32.0" prefWidth="873.0" promptText="Поиск" styleClass="textSecond" />
+                     </children>
+                  </HBox>
+                  <Button layoutX="320.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Удалить фильм" />
+                  <Button layoutX="517.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать фильм" />
                </children>
             </Pane>
          </children>
