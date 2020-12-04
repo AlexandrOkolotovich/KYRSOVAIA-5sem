@@ -81,6 +81,7 @@ public class MonoThreadClientHandler implements Runnable {
                     case "null":{
                         break;
                     }
+                    default:break;
                 }
             }
 
@@ -98,26 +99,39 @@ public class MonoThreadClientHandler implements Runnable {
     private void openMenuAdmin(){
         String menu = "work";
 
-        DataBaseHandler handler = new DataBaseHandler();
-        String users = handler.getUsers();
+       // DataBaseHandler handler = new DataBaseHandler();
+        //String users = handler.getUsers();
+
 
         try {
-            send(users);
+            //send(users);
+            AdminCommand.sendUsersData();
+            AdminCommand.sendCinemaInfo();
 
-            while (!menu.equals( "back" )) {
+            while (!Objects.equals(menu, "back")) {
                 menu = get();
                 System.out.println(menu);
 
-                switch (Objects.requireNonNull(menu)){
-                    case "deleteUser":{
-                        AdminCommand.deleteUser();
+                if (menu != null) {
+                    switch (menu){
+                        case "deleteUser":{
+                            AdminCommand.deleteUser();
+                            break;
+                        }
+                        case "updateCinemaInfo":{
+                            AdminCommand.updateCInfo();
+                        }
+                        case "back": {
+                            menu = "back";
+                            break;
+                        }
+                        default:{
+                            menu = "back";
+                            break;
+                        }
                     }
-                    case "back": {
-                        menu = "back";
-                        break;
-                    }
-                    default:break;
                 }
+                else break;
             }
         } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();

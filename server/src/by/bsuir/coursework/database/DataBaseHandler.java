@@ -78,7 +78,7 @@ public class DataBaseHandler extends Configs {
         try {
 
             String select = "SELECT * FROM "+Const.USER_TABLE;
-            PreparedStatement prep1 = getDbConnection().prepareStatement( select );
+            PreparedStatement prep1 = getDbConnection().prepareStatement(select);
             ResultSet rs = prep1.executeQuery();
             while (rs.next()){
 
@@ -115,6 +115,41 @@ public class DataBaseHandler extends Configs {
         PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
         prSt.setInt(1,userId);
         prSt.executeUpdate();
+    }
+
+    public ResultSet getCinemaInfo(){
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM "+Const.CINEMAINFO_TABLE;
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+        return resSet;
+    }
+
+    public void updateCinemaInfo(String paragraph1, String paragraph2, String paragraph3, String paragraph4) throws SQLException, ClassNotFoundException {
+        String update = "UPDATE " + Const.CINEMAINFO_TABLE + " SET " + Const.CINEMAINFO_PARAGRAPH1 +
+                "= ?, " + Const.CINEMAINFO_PARAGRAPH2 + "= ?, " + Const.CINEMAINFO_PARAGRAPH3 +
+                "= ?, " + Const.CINEMAINFO_PARAGRAPH4 + "=? " + "WHERE " + Const.CINEMAINFO_ID + " = ?";
+
+        PreparedStatement prSt = getDbConnection().prepareStatement(update);
+
+        prSt.setString(1, paragraph1);
+        prSt.setString(2, paragraph2);
+        prSt.setString(3, paragraph3);
+        prSt.setString(4, paragraph4);
+        prSt.setInt(5, 1);
+
+        prSt.executeUpdate();
+        prSt.close();
     }
 
 

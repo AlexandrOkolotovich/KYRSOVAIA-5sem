@@ -30,12 +30,20 @@
    <children>
       <HBox prefHeight="37.0" prefWidth="1280.0" style="-fx-background-color: #e6e6e6;">
          <children>
+            <ImageView fx:id="backButton" fitHeight="31.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resource/img/back.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="1200.0" right="2.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
             <ImageView fx:id="hideButton" fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resource/img/hide.png" />
                </image>
                <HBox.margin>
-                  <Insets left="1225.0" top="5.0" />
+                  <Insets top="5.0" />
                </HBox.margin>
             </ImageView>
             <ImageView fx:id="closeButton" fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -789,59 +797,6 @@
                   </TableView>
                </children>
             </Pane>
-            <ScrollPane fx:id="cinemaInfoPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <TextArea fx:id="paragraph1" layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <Label layoutX="43.0" layoutY="34.0" prefHeight="28.0" prefWidth="161.0" text="О кинотеатре">
-                           <font>
-                              <Font name="Verdana" size="22.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="214.0" fitWidth="369.0" layoutX="555.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-04.jpg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="282.0" fitWidth="473.0" layoutX="39.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-03.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea fx:id="paragraph2" layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="281.0" fitWidth="409.0" layoutX="556.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-5.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea fx:id="paragraph3" layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="261.0" fitWidth="484.0" layoutX="46.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/img-02.jpg" />
-                           </image>
-                        </ImageView>
-                        <TextArea fx:id="paragraph4" layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextArea>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
             <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
             <Pane fx:id="addMoviePane" prefHeight="723.0" prefWidth="994.0" style="-fx-background-color: #e6e6e6;">
                <children>
@@ -855,7 +810,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="264.0" layoutY="122.0" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                  <TextField fx:id="movieTitleField" layoutX="264.0" layoutY="122.0" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -937,20 +892,12 @@
                   </VBox>
                   <VBox layoutX="264.0" layoutY="227.0" prefHeight="252.0" prefWidth="186.0">
                      <children>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                        <TextField fx:id="productionYearField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </TextField>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                        <TextField fx:id="countryField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -958,7 +905,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                        <TextField fx:id="genreField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -966,7 +913,7 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                        <TextField fx:id="directorField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -974,7 +921,15 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                        <TextField fx:id="ageField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="timeField" prefHeight="32.0" prefWidth="186.0" styleClass="textSecond">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -1003,12 +958,12 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <TextArea layoutX="268.0" layoutY="506.0" prefHeight="122.0" prefWidth="488.0" style="-fx-background-color: #e6e6e6;" wrapText="true">
+                  <TextArea fx:id="descriptionArea" layoutX="268.0" layoutY="506.0" prefHeight="122.0" prefWidth="488.0" style="-fx-background-color: #e6e6e6;" wrapText="true">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </TextArea>
-                  <Button layoutX="463.0" layoutY="654.0" mnemonicParsing="false" styleClass="buttonAction" text="Добавить" />
+                  <Button layoutX="463.0" layoutY="654.0" mnemonicParsing="false" onAction="#addMovie" styleClass="buttonAction" text="Добавить" />
                </children>
             </Pane>
             <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
@@ -1106,6 +1061,64 @@
                   </Label>
                </children>
             </Pane>
+            <ScrollPane fx:id="cinemaInfoPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1262.0" prefWidth="980.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <TextArea fx:id="paragraph1" layoutX="37.0" layoutY="77.0" prefHeight="171.0" prefWidth="472.0" style="-fx-background-color: #e6e6e6;" text="Сеть кинотеатров Киномакс предоставляет всем жителям и гостям города Минск возможность просмотра современных фильмов и мультфильмов в залах с современной системой стереопроекции RealD 3D. Удачное расположение кинотеатра в Минске на территории ТРЦ «Dana Moll» позволит жителям города совместить шоппинг с просмотром лучшиего кино отечественного и зарубежного кинематографа." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="43.0" layoutY="34.0" prefHeight="28.0" prefWidth="161.0" text="О кинотеатре">
+                           <font>
+                              <Font name="Verdana" size="22.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="214.0" fitWidth="369.0" layoutX="555.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-04.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="282.0" fitWidth="473.0" layoutX="39.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-03.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea fx:id="paragraph2" layoutX="552.0" layoutY="287.0" prefHeight="286.0" prefWidth="379.0" style="-fx-background-color: #e6e6e6;" text="RealD – система 3D-проекции, основанная на высокой яркости и чёткости. Картинки для правого и левого глаза на киноэкране меняются со скоростью 144 кадра в секунду, то есть, по 72 кадра в секунду для каждого глаза.В консешн-баре киноцентра Киномакс представлен широкий ассортимент безалкогольных и слабоалкогольных напитков, неповторимо вкусный карамелизированный попкорн. Кинотеатр Киномакс в Минске предлагает всем гостям воспользоваться бесплатным доступом к Wi-Fi Интернету, что позволит скрасить время перед сеансом." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="281.0" fitWidth="409.0" layoutX="556.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-5.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea fx:id="paragraph3" layoutX="41.0" layoutY="618.0" prefHeight="286.0" prefWidth="470.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске также оборудован креслами D-BOX. Основной особенностью кресел D-BOX является их возможность вибрировать и наклоняться в разные стороны во время просмотра фильма. Просмотр фильмов в таких креслах позволит окунуться в мир неповторимых ощущений и испытать все спецэффекты на себе." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fitHeight="261.0" fitWidth="484.0" layoutX="46.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/img-02.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextArea fx:id="paragraph4" layoutX="554.0" layoutY="946.0" prefHeight="250.0" prefWidth="382.0" style="-fx-background-color: #e6e6e6;" text="Кинотеатр в Минске – это комфортабельный зал общей численностью 100 мест, оснащенных новейшим оборудованием и суперсовременной акустической аппаратурой. Каждый новый сеанс кино стартует через 15 минут, а огромный выбор новых фильмов и мультфильмов не оставит равнодушным ни одного посетителя. Полная афиша кино позволит выбрать именно тот фильм, который интересует вас сегодня." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                        <Button layoutX="423.0" layoutY="1221.0" mnemonicParsing="false" onAction="#updateCInfo" prefHeight="36.0" prefWidth="218.0" styleClass="buttonAction" text="Изменить информацию">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
             <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">

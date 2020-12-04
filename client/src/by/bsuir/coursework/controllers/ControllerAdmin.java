@@ -10,13 +10,18 @@ import javafx.animation.Timeline;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -130,6 +135,9 @@ public class ControllerAdmin {
     @FXML
     private TextArea paragraph4;
 
+    @FXML
+    private ImageView backButton;
+
 
     public ControllerAdmin() { }
 
@@ -204,8 +212,30 @@ public class ControllerAdmin {
         });
 
         hideButton.setOnMouseClicked(mouseEvent -> {
-            Stage stage = (Stage) closeButton.getScene().getWindow();
+            Stage stage = (Stage) hideButton.getScene().getWindow();
             stage.setIconified(true);
+        });
+
+        backButton.setOnMouseClicked(mouseEvent -> {
+            backButton.getScene().getWindow().hide();
+
+            Connect.send("back");
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/by/bsuir/coursework/view/authorization.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show();
         });
     }
 
@@ -243,15 +273,38 @@ public class ControllerAdmin {
         String pf3;
         String pf4;
 
-        pf1 = Connect.get();//нужно сделать на сервере отправку
+        pf1 = Connect.get();
+        System.out.println(pf1);
         pf2 = Connect.get();
         pf3 = Connect.get();
         pf4 = Connect.get();
+        System.out.println(pf4);
 
         paragraph1.setText(pf1);
         paragraph2.setText(pf2);
         paragraph3.setText(pf3);
         paragraph4.setText(pf4);
+    }
+
+    @FXML
+    void updateCInfo(ActionEvent event) {
+        Connect.send("updateCinemaInfo");
+
+        String pf1;
+        String pf2;
+        String pf3;
+        String pf4;
+
+        pf1 = paragraph1.getText();
+        pf2 = paragraph2.getText();
+        pf3 = paragraph3.getText();
+        pf4 = paragraph4.getText();
+
+        Connect.send(pf1);
+        Connect.send(pf2);
+        Connect.send(pf3);
+        Connect.send(pf4);
+
     }
 
 
