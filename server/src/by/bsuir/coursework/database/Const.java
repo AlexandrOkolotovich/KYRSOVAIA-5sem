@@ -24,7 +24,7 @@ public class Const {
     public static final String MOVIE_AGE="age";
     public static final String MOVIE_TIME="time";
     public static final String MOVIE_DESCRIPTION="description";
-    public static final String USER_RATING="rating";
+    public static final String MOVIE_RATING="rating";
 
     public static final String SCHEDULE_TABLE="schedule";
 

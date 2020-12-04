@@ -66,4 +66,28 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         handler.updateCinemaInfo(paragraph1, paragraph2, paragraph3, paragraph4);
     }
 
+    public static void addMovie() {
+        String movie;
+
+        String movieTitle = get();
+        movie = get();
+
+        if (movie != null) {
+            System.out.println("я получил фильм: " + movie);
+
+            String[] s = movie.split(" ");
+            String prodYear = s[0];
+            int productionYear = Integer.parseInt(prodYear);
+            String country = s[1];
+            String genre = s[2];
+            String director = s[3];
+            String age = s[4];
+            String t = s[5];
+            int time = Integer.parseInt(t);
+            String description = get();
+            DataBaseHandler handler = new DataBaseHandler();
+            handler.addNewMovie(movieTitle, productionYear, country, genre, director, age, time, description);
+        }
+    }
+
 }

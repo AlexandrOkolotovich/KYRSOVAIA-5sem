@@ -152,5 +152,29 @@ public class DataBaseHandler extends Configs {
         prSt.close();
     }
 
+    public void addNewMovie(String movieTitle, int productionYear, String country, String genre, String director,
+                           String age, int time, String description) {
+        String insert = "INSERT INTO " + Const.MOVIE_TABLE + "(" + Const.MOVIE_TITLE + "," + Const.MOVIE_YEAR + "," +
+                Const.MOVIE_COUNTRY + "," + Const.MOVIE_GENRE + "," + Const.MOVIE_DIRECTOR + "," + Const.MOVIE_AGE + "," +
+                Const.MOVIE_TIME + "," + Const.MOVIE_DESCRIPTION + ")" +
+                "VALUES(?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setString(1, movieTitle);
+            prSt.setInt(2, productionYear);
+            prSt.setString(3, country);
+            prSt.setString(4, genre);
+            prSt.setString(5, director);
+            prSt.setString(6, age);
+            prSt.setInt(7, time);
+            prSt.setString(8, description);
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

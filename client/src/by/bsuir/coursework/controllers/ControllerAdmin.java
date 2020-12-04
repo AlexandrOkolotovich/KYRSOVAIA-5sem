@@ -3,6 +3,8 @@ package by.bsuir.coursework.controllers;
 import by.bsuir.coursework.collections.CollectionUsers;
 import by.bsuir.coursework.collections.UserInf;
 import by.bsuir.coursework.connection.Connect;
+import by.bsuir.coursework.entity.Movie;
+import by.bsuir.coursework.entity.Role;
 import by.bsuir.coursework.entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -24,6 +26,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControllerAdmin {
     @FXML
@@ -137,6 +141,30 @@ public class ControllerAdmin {
 
     @FXML
     private ImageView backButton;
+
+    @FXML
+    private TextField movieTitleField;
+
+    @FXML
+    private TextField productionYearField;
+
+    @FXML
+    private TextField countryField;
+
+    @FXML
+    private TextField genreField;
+
+    @FXML
+    private TextField directorField;
+
+    @FXML
+    private TextField ageField;
+
+    @FXML
+    private TextField timeField;
+
+    @FXML
+    private TextArea descriptionArea;
 
 
     public ControllerAdmin() { }
@@ -307,7 +335,92 @@ public class ControllerAdmin {
 
     }
 
+    @FXML
+    void addMovie(ActionEvent event) {
+        boolean key = true;
 
+        String movieTitle;
+        String productionYear;
+        String country;
+        String genre;
+        String director;
+        String age;
+        String time;
+        String description;
+
+        movieTitle = movieTitleField.getText();
+        productionYear = productionYearField.getText();
+        country = countryField.getText();
+        genre = genreField.getText();
+        director = directorField.getText();
+        age = ageField.getText();
+        time = timeField.getText();
+        description = descriptionArea.getText();
+
+        if (movieTitle.isEmpty() || movieTitle.length() > 45 ) {
+            key = false;
+        }
+        if (productionYear.isEmpty() || productionYear.length() < 3 || productionYear.length() > 5 || !validateNum(productionYear)) {
+            key = false;
+        }
+        if (country.isEmpty() || country.length() < 2 || country.length() > 35 || validateNum(country)) {
+            key = false;
+        }
+        if (genre.isEmpty() || genre.length() < 3 || genre.length() > 30 || !validateString(genre)) {
+            key = false;
+        }
+        if (director.isEmpty() || director.length() < 4 || director.length() > 32 || !validateString(director)) {
+            key = false;
+        }
+        if (age.isEmpty() || age.length() > 5) {
+            key = false;
+        }
+        if (time.isEmpty()  || time.length() > 4 || !validateNum(time)) {
+            key = false;
+        }
+        if (description.isEmpty() || description.length() > 600) {
+            key = false;
+        }
+        if(key){
+            Connect.send("addMovie");
+            Movie movie = new Movie( productionYear, country, genre, director, age, time);
+            Connect.send(movieTitle);
+            Connect.send(movie);
+            Connect.send(description);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Успех");
+            alert.setHeaderText("Фильм добавлен!");
+            alert.showAndWait();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Фильм не добавлен!");
+            alert.showAndWait();
+        }
+    }
+
+    private boolean validateNum(String source) {
+        Pattern pattern = Pattern.compile("^([0-9]+)$");
+        Matcher matcher = pattern.matcher(source);
+
+        if (!matcher.matches()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateString(String source) {
+        Pattern pattern = Pattern.compile("^([А-Я][а-я]+)$");
+        Matcher matcher = pattern.matcher(source);
+
+        if (!matcher.matches()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 
 }
