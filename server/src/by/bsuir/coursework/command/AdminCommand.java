@@ -90,4 +90,47 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         }
     }
 
+    public static void getNewMovie() throws SQLException, IOException {
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet result = handler.getNewMovie();
+
+        int id;
+        String movieTitle;
+        int productYear;
+        String country;
+        String genre;
+        String director;
+        String age;
+        int t;
+        String description;
+        int r;
+
+        id = result.getInt(1);
+        String idmovie = String.valueOf(id);
+        movieTitle = result.getString(2);
+        productYear = result.getInt(3);
+        String productionYear = String.valueOf(productYear);
+        country = result.getString(4);
+        genre = result.getString(5);
+        director = result.getString(6);
+        age = result.getString(7);
+        t = result.getInt(8);
+        String time = String.valueOf(t);
+        description = result.getString(9);
+        r = result.getInt(10);
+        String rating = String.valueOf(r);
+
+        send(idmovie);
+        send(movieTitle);
+        send(productionYear);
+        send(country);
+        send(genre);
+        send(director);
+        send(age);
+        send(time);
+        send(description);
+        send(rating);
+
+    }
+
 }

@@ -264,6 +264,7 @@ public class ControllerAdmin {
         initUserInfo();
         userInTable();
         initCinemaInfo();
+        movieInTable();
 
         closeButton.setOnMouseClicked(mouseEvent -> {
             Stage stages = (Stage) closeButton.getScene().getWindow();
@@ -435,6 +436,8 @@ public class ControllerAdmin {
     }
 
     void fillInTableNewMovie(){
+        Connect.send("getNewMovie");
+
         CollectionMovie.getInstance().fillNewData();
         movieTitle.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
         productionYear.setCellValueFactory(new PropertyValueFactory<>("productionYear"));

@@ -173,7 +173,25 @@ public class DataBaseHandler extends Configs {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
 
+    public ResultSet getNewMovie(){
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + Const.MOVIE_TABLE + " ORDER BY " + Const.MOVIE_ID + " DESC LIMIT 1";
+
+        try {
+            PreparedStatement prSt  =  getDbConnection().prepareStatement(select);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return resSet;
     }
 
 

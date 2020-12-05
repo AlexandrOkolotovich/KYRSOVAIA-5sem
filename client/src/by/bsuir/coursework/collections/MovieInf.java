@@ -1,17 +1,19 @@
 package by.bsuir.coursework.collections;
 
 public class MovieInf {
+    private Integer idmovie;
     private String movieTitle;
-    private int productionYear;
+    private Integer productionYear;
     private String country;
     private String genre;
     private String director;
     private String age;
-    private int time;
+    private Integer time;
     private String description;
-    private int rating;
+    private Integer rating;
 
-    public MovieInf(String movieTitle, int productionYear, String country, String genre, String director, String age, int time, String description, int rating) {
+    public MovieInf(Integer idmovie, String movieTitle, Integer productionYear, String country, String genre, String director, String age, Integer time, String description, Integer rating) {
+        this.idmovie = idmovie;
         this.movieTitle = movieTitle;
         this.productionYear = productionYear;
         this.country = country;
@@ -21,6 +23,14 @@ public class MovieInf {
         this.time = time;
         this.description = description;
         this.rating = rating;
+    }
+
+    public Integer getIdmovie() {
+        return idmovie;
+    }
+
+    public void setIdmovie(Integer idmovie) {
+        this.idmovie = idmovie;
     }
 
     public String getMovieTitle() {

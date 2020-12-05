@@ -10,9 +10,9 @@ public class Movie {
     private String age;
     private int time;
     private String description;
-    private double rating;
+    private int rating;
 
-    public Movie(int idmovie, String movieTitle, int productionYear, String country, String genre, String director, String age, int time, String description, double rating) {
+    public Movie(int idmovie, String movieTitle, int productionYear, String country, String genre, String director, String age, int time, String description, int rating) {
         this.idmovie = idmovie;
         this.movieTitle = movieTitle;
         this.productionYear = productionYear;
@@ -97,11 +97,11 @@ public class Movie {
         this.description = description;
     }
 
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 }

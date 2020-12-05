@@ -1,5 +1,6 @@
 package by.bsuir.coursework.collections;
 
+import by.bsuir.coursework.connection.Connect;
 import by.bsuir.coursework.controllers.ControllerAdmin;
 import by.bsuir.coursework.entity.Movie;
 import javafx.collections.FXCollections;
@@ -22,20 +23,22 @@ public final class CollectionMovie extends ControllerAdmin {
     }
 
     public void fillNewData(){
-
-        String movieTitle = movieTitleField.getText();
-        String prodYear = productionYearField.getText();
+        String id = Connect.get();
+        Integer idmovie = Integer.valueOf(id);
+        String movieTitle = Connect.get(); // тут не работает, надо что-то новое придумать
+        String prodYear = Connect.get();
         Integer productionYear = Integer.valueOf(prodYear);
-        String country = countryField.getText();
-        String genre = genreField.getText();
-        String director = directorField.getText();
-        String age = ageField.getText();
-        String t = timeField.getText();
+        String country = Connect.get();
+        String genre = Connect.get();
+        String director = Connect.get();
+        String age = Connect.get();
+        String t = Connect.get();
         Integer time = Integer.valueOf(t);
-        String description = descriptionArea.getText();
-        Integer rating = 0;
+        String description = Connect.get();
+        String r = Connect.get();
+        Integer rating = Integer.valueOf(r);
 
-        MovieInf movie = new MovieInf(movieTitle, productionYear, country, genre, director, age, time, description, rating);
+        MovieInf movie = new MovieInf(idmovie,movieTitle, productionYear, country, genre, director, age, time, description, rating);
         movies.add(movie);
     }
 }
