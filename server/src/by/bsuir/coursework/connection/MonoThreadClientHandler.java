@@ -107,6 +107,7 @@ public class MonoThreadClientHandler implements Runnable {
             //send(users);
             AdminCommand.sendUsersData();
             AdminCommand.sendCinemaInfo();
+            AdminCommand.sendMoviesData();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();
@@ -128,6 +129,10 @@ public class MonoThreadClientHandler implements Runnable {
                         }
                         case "getNewMovie":{
                             AdminCommand.getNewMovie();
+                            break;
+                        }
+                        case "deleteMovie":{
+                            AdminCommand.deleteMovie();
                             break;
                         }
                         case "back": {

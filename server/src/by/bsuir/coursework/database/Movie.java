@@ -25,6 +25,9 @@ public class Movie {
         this.rating = rating;
     }
 
+    public Movie() {
+    }
+
     public int getIdmovie() {
         return idmovie;
     }

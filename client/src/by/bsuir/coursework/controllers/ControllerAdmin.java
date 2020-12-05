@@ -145,28 +145,28 @@ public class ControllerAdmin {
     private ImageView backButton;
 
     @FXML
-    protected TextField movieTitleField;
+    private TextField movieTitleField;
 
     @FXML
-    protected TextField productionYearField;
+    private TextField productionYearField;
 
     @FXML
-    protected TextField countryField;
+    private TextField countryField;
 
     @FXML
-    protected TextField genreField;
+    private TextField genreField;
 
     @FXML
-    protected TextField directorField;
+    private TextField directorField;
 
     @FXML
-    protected TextField ageField;
+    private TextField ageField;
 
     @FXML
-    protected TextField timeField;
+    private TextField timeField;
 
     @FXML
-    protected TextArea descriptionArea;
+    private TextArea descriptionArea;
 
     @FXML
     private TableView<MovieInf> movieTable;
@@ -439,6 +439,15 @@ public class ControllerAdmin {
         Connect.send("getNewMovie");
 
         CollectionMovie.getInstance().fillNewData();
+        setMovieInTable();
+    }
+
+    void movieInTable(){
+        CollectionMovie.getInstance().fillData();
+        setMovieInTable();
+    }
+
+    void setMovieInTable(){
         movieTitle.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
         productionYear.setCellValueFactory(new PropertyValueFactory<>("productionYear"));
         country.setCellValueFactory(new PropertyValueFactory<>("country"));
@@ -461,6 +470,14 @@ public class ControllerAdmin {
         ageField.setText("");
         timeField.setText("");
         descriptionArea.setText("");
+    }
+
+    @FXML
+    void deleteMovie(ActionEvent event) {
+        MovieInf selectedMovie = (MovieInf) movieTable.getSelectionModel().getSelectedItem();
+        CollectionMovie.getInstance().delete(selectedMovie);
+        Connect.send("deleteMovie");
+        Connect.send(selectedMovie.getIdmovie());
     }
 
     private boolean validateNum(String source) {

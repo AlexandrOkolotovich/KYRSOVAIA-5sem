@@ -1090,6 +1090,40 @@
                   </Button>
                </children>
             </Pane>
+            <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="337.0" layoutY="8.0" text="Список фильмов" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="movieTable" layoutX="42.0" layoutY="137.0" prefHeight="497.0" prefWidth="910.0">
+                    <columns>
+                      <TableColumn fx:id="movieTitle" prefWidth="179.19998168945312" text="Фильм" />
+                      <TableColumn fx:id="productionYear" prefWidth="67.20004272460938" text="Год " />
+                        <TableColumn fx:id="country" prefWidth="101.5999755859375" text="Страна" />
+                        <TableColumn fx:id="genre" prefWidth="64.0" text="Жанр" />
+                        <TableColumn fx:id="director" prefWidth="112.0" text="Режисёр" />
+                        <TableColumn fx:id="age" prefWidth="64.79998779296875" text="Возраст" />
+                        <TableColumn fx:id="time" prefWidth="66.39996337890625" text="Время" />
+                        <TableColumn fx:id="description" prefWidth="178.40020751953125" text="Описание" />
+                        <TableColumn fx:id="rating" prefWidth="73.5999755859375" text="Оценка" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutX="42.0" layoutY="83.0" prefHeight="34.0" prefWidth="910.0">
+                     <children>
+                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="32.0" prefWidth="873.0" promptText="Поиск" styleClass="textSecond" />
+                     </children>
+                  </HBox>
+                  <Button layoutX="320.0" layoutY="655.0" mnemonicParsing="false" onAction="#deleteMovie" styleClass="buttonAction" text="Удалить фильм" />
+                  <Button layoutX="517.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать фильм" />
+               </children>
+            </Pane>
             <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="292.0" text="Информация об администраторе" textFill="#3ab56b">
@@ -1182,40 +1216,6 @@
                         </ImageView>
                      </children>
                   </Pane>
-               </children>
-            </Pane>
-            <Pane fx:id="listMoviePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <Label layoutX="337.0" layoutY="8.0" text="Список фильмов" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="movieTable" layoutX="42.0" layoutY="137.0" prefHeight="497.0" prefWidth="910.0">
-                    <columns>
-                      <TableColumn fx:id="movieTitle" prefWidth="179.19998168945312" text="Фильм" />
-                      <TableColumn fx:id="productionYear" prefWidth="67.20004272460938" text="Год " />
-                        <TableColumn fx:id="country" prefWidth="101.5999755859375" text="Страна" />
-                        <TableColumn fx:id="genre" prefWidth="64.0" text="Жанр" />
-                        <TableColumn fx:id="director" prefWidth="112.0" text="Режисёр" />
-                        <TableColumn fx:id="age" prefWidth="64.79998779296875" text="Возраст" />
-                        <TableColumn fx:id="time" prefWidth="66.39996337890625" text="Время" />
-                        <TableColumn fx:id="description" prefWidth="178.40020751953125" text="Описание" />
-                        <TableColumn fx:id="rating" prefWidth="73.5999755859375" text="Оценка" />
-                    </columns>
-                  </TableView>
-                  <HBox layoutX="42.0" layoutY="83.0" prefHeight="34.0" prefWidth="910.0">
-                     <children>
-                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/search.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="32.0" prefWidth="873.0" promptText="Поиск" styleClass="textSecond" />
-                     </children>
-                  </HBox>
-                  <Button layoutX="320.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Удалить фильм" />
-                  <Button layoutX="517.0" layoutY="655.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать фильм" />
                </children>
             </Pane>
          </children>

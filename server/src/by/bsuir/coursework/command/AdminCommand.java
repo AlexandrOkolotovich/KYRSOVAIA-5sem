@@ -133,4 +133,22 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
 
     }
 
+    public static void sendMoviesData(){
+        DataBaseHandler handler = new DataBaseHandler();
+        String movies = handler.getMovies();
+        try {
+            send(movies);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteMovie() throws SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(Objects.requireNonNull(get()));
+
+        DataBaseHandler handler = new DataBaseHandler();
+
+        handler.deleteMovie(id);
+    }
+
 }

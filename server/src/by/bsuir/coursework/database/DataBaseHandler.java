@@ -194,5 +194,55 @@ public class DataBaseHandler extends Configs {
         return resSet;
     }
 
+    public String getMovies() {
+        Movie movie;
+        JSONObject movieJson;
+        JSONArray movies = new JSONArray();
+        try {
 
+            String select = "SELECT * FROM "+Const.MOVIE_TABLE;
+            PreparedStatement prep = getDbConnection().prepareStatement(select);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next()){
+
+                movie = new Movie();
+                movie.setIdmovie(rs.getInt(1));
+                movie.setMovieTitle(rs.getString(2));
+                movie.setProductionYear(rs.getInt(3));
+                movie.setCountry(rs.getString(4));
+                movie.setGenre(rs.getString(5));
+                movie.setDirector(rs.getString(6));
+                movie.setAge(rs.getString(7));
+                movie.setTime(rs.getInt(8));
+                movie.setDescription(rs.getString(9));
+                movie.setRating(rs.getInt(10));
+
+                movieJson = new JSONObject();
+                movieJson.put("idmovie", movie.getIdmovie());
+                movieJson.put("movieTitle", movie.getMovieTitle());
+                movieJson.put("productionYear", movie.getProductionYear());
+                movieJson.put("country", movie.getCountry());
+                movieJson.put("genre", movie.getGenre());
+                movieJson.put("director", movie.getDirector());
+                movieJson.put("age", movie.getAge());
+                movieJson.put("time", movie.getTime());
+                movieJson.put("description", movie.getDescription());
+                movieJson.put("rating", movie.getRating());
+
+                movies.put( movieJson );
+            }
+
+        } catch (SQLException | ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return movies.toString();
+    }
+
+    public void deleteMovie(Integer movieId) throws SQLException, ClassNotFoundException {
+        String deletion = "DELETE FROM " + Const.MOVIE_TABLE+ " WHERE "+ Const.MOVIE_ID +" = ?";
+        PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
+        prSt.setInt(1,movieId);
+        prSt.executeUpdate();
+    }
 }
