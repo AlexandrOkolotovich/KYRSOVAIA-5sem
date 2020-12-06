@@ -171,4 +171,40 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         handler.addNewMovieInSchedule(schedule);
     }
 
+    public static void getNewSchedule() throws SQLException, IOException {
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet result = handler.getNewSchedule();
+
+        int id;
+        Date movieDate;
+        Time movieTime;
+        String movieTitle;
+        String genre;
+        String format;
+        String age;
+        double p;
+
+        id = result.getInt(1);
+        String idscedule = String.valueOf(id);
+        movieDate = result.getDate(2);
+        String sessionDate = String.valueOf(movieDate);
+        movieTime = result.getTime(3);
+        String sessionTime = String.valueOf(movieTime);
+        movieTitle = result.getString(4);
+        genre = result.getString(5);
+        format = result.getString(6);
+        age = result.getString(7);
+        p = result.getDouble(8);
+        String price = String.valueOf(p);
+
+        send(idscedule);
+        send(sessionDate);
+        send(sessionTime);
+        send(movieTitle);
+        send(genre);
+        send(format);
+        send(age);
+        send(price);
+    }
+
 }

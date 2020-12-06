@@ -1,9 +1,6 @@
 package by.bsuir.coursework.controllers;
 
-import by.bsuir.coursework.collections.CollectionMovie;
-import by.bsuir.coursework.collections.CollectionUsers;
-import by.bsuir.coursework.collections.MovieInf;
-import by.bsuir.coursework.collections.UserInf;
+import by.bsuir.coursework.collections.*;
 import by.bsuir.coursework.connection.Connect;
 import by.bsuir.coursework.entity.Movie;
 import by.bsuir.coursework.entity.Role;
@@ -28,9 +25,12 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -225,6 +225,45 @@ public class ControllerAdmin {
 
     @FXML
     private TextField priceField;
+
+    @FXML
+    private TableView<ScheduleInf> scheduleLittleTable;
+
+    @FXML
+    private TableColumn<ScheduleInf, Date> dateScheduleLittle;
+
+    @FXML
+    private TableColumn<ScheduleInf, Time> timeScheduleLittle;
+
+    @FXML
+    private TableColumn<ScheduleInf, String> movieScheduleLittle;
+
+    @FXML
+    private TableColumn<ScheduleInf, Double> priceScheduleLittle;
+
+    @FXML
+    private TableView<ScheduleInf> scheduleTable;
+
+    @FXML
+    private TableColumn<ScheduleInf, Date> dateSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, Time> timeSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, String> movieTitleSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, String> genreSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, String> formatSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, String> ageSchedule;
+
+    @FXML
+    private TableColumn<ScheduleInf, Double> priceSchedule;
 
 
     //public ControllerAdmin() {}
@@ -471,11 +510,13 @@ public class ControllerAdmin {
 
         CollectionMovie.getInstance().fillNewData();
         setMovieInTable();
+       // initMovieScheduleTable();
     }
 
     void movieInTable(){
         CollectionMovie.getInstance().fillData();
         setMovieInTable();
+        initMovieScheduleTable();
     }
 
     void setMovieInTable(){
@@ -538,9 +579,21 @@ public class ControllerAdmin {
         }
     }
 
+    private boolean validatePrice(String source) {
+        Pattern pattern = Pattern.compile("^[0-9]+\\.[0-9]{1,2}$");
+        Matcher matcher = pattern.matcher(source);
+
+        if (!matcher.matches()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @FXML
     void addMovieInSchedule(ActionEvent event) {
         boolean key = true;
+        String alertString = "Фильм не добавлен в расписание!\n";
 
         LocalDate movieDate = dateField.getValue();
         String sessionDate = movieDate.toString();
@@ -552,19 +605,27 @@ public class ControllerAdmin {
 
         if (sessionDate.isEmpty()) {
             key = false;
+            alertString+= "Не выбрана дата!\n";
         }
         if (movieIdSchedule.isEmpty()) {
             key = false;
+            alertString+= "Не выбран фильм!\n";
         }
         if (sessionTime.isEmpty()) {
             key = false;
+            alertString+= "Не выбрано время!\n";
         }
-        if (format.isEmpty()) {
+        if (format.isEmpty()) {//потом попробовать закоментить так как в бд стоит null
             key = false;
+            alertString+= "Не выбран формат!\n";
         }
-
-        if (price.isEmpty()  || price.length() > 4 || !validateNum(price)) {//сделать проверку на Double
+        if (price.isEmpty()  || price.length() > 4 || !validatePrice(price)) {
             key = false;
+            alertString+= "Неверный ввод цены!\n";
+        }
+        if(timeMatchCheck()){
+            key = false;
+            alertString+= "В этот день и это время уже стоит фильм!\n";
         }
         if(key){
             Connect.send("addMovieInSchedule");
@@ -574,7 +635,7 @@ public class ControllerAdmin {
             Connect.send(format);
             Connect.send(price);
 
-            //fillInTableNewMovie();
+            fillInTableNewSchedule();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Успех");
@@ -583,9 +644,51 @@ public class ControllerAdmin {
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
-            alert.setHeaderText("Фильм не добавлен в расписание!");
+            alert.setHeaderText(alertString);
             alert.showAndWait();
         }
+    }
+
+    boolean timeMatchCheck(){
+        Connect.send("timeMatchCheck");
+
+        LocalDate movieDate = dateField.getValue();
+        String sessionDate = movieDate.toString();
+        String sessionTime = timeComboBox.getValue();
+        Connect.send(sessionDate);
+        Connect.send(sessionTime);
+
+        return Objects.equals(Connect.get(), "incorrectly");
+
+    }
+
+    void fillInTableNewSchedule(){
+        Connect.send("getNewSchedule");
+
+        CollectionSchedule.getInstance().fillNewData();
+        setScheduleInTable();
+        setScheduleInLittleTable();
+    }
+
+    void setScheduleInTable(){
+        dateSchedule.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
+        timeSchedule.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        movieTitleSchedule.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+        genreSchedule.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        formatSchedule.setCellValueFactory(new PropertyValueFactory<>("format"));
+        ageSchedule.setCellValueFactory(new PropertyValueFactory<>("age"));
+        priceSchedule.setCellValueFactory(new PropertyValueFactory<>("price"));
+        scheduleTable.setItems(CollectionSchedule.getInstance().getSchedules());
+    }
+
+    void setScheduleInLittleTable(){
+        dateScheduleLittle.setCellValueFactory(new PropertyValueFactory<>("sessionDate"));
+        timeScheduleLittle.setCellValueFactory(new PropertyValueFactory<>("sessionTime"));
+        movieScheduleLittle.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+        priceScheduleLittle.setCellValueFactory(new PropertyValueFactory<>("price"));
+        scheduleLittleTable.setItems(CollectionSchedule.getInstance().getSchedules());
+
+
     }
 
     @FXML

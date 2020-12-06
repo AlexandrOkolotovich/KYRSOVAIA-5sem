@@ -121,39 +121,6 @@
       </VBox>
       <StackPane layoutX="284.0" layoutY="31.0" prefHeight="715.0" prefWidth="994.0">
          <children>
-            <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-                  <HBox layoutX="70.0" layoutY="83.0" prefHeight="43.0" prefWidth="871.0">
-                     <children>
-                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resource/img/search.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="32.0" prefWidth="834.0" styleClass="textSecond" />
-                     </children>
-                  </HBox>
-                  <TableView layoutX="70.0" layoutY="130.0" prefHeight="467.0" prefWidth="871.0">
-                    <columns>
-                      <TableColumn prefWidth="107.19998168945312" text="Дата показа" />
-                      <TableColumn prefWidth="112.0" text="Время начала" />
-                        <TableColumn prefWidth="266.39996337890625" text="Название фильма" />
-                        <TableColumn prefWidth="120.800048828125" text="Жанр" />
-                        <TableColumn prefWidth="81.59991455078125" text="Формат" />
-                        <TableColumn prefWidth="76.79998779296875" text="Возраст" />
-                        <TableColumn prefWidth="104.7999267578125" text="Стоимость" />
-                    </columns>
-                  </TableView>
-                  <Button layoutX="106.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Просмотр занятых мест" />
-                  <Button layoutX="361.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Удалить фильм из расписания" />
-                  <Button layoutX="666.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать расписание" />
-               </children>
-            </Pane>
             <Pane fx:id="placesCinemaPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                <children>
                   <Label layoutX="366.0" layoutY="7.0" text="Места в зале" textFill="#3ab56b">
@@ -1206,12 +1173,12 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <TableView layoutX="588.0" layoutY="117.0" prefHeight="491.0" prefWidth="382.0">
+                  <TableView fx:id="scheduleLittleTable" layoutX="588.0" layoutY="117.0" prefHeight="491.0" prefWidth="382.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Число" />
-                      <TableColumn prefWidth="75.0" text="Время" />
-                        <TableColumn prefWidth="156.533203125" text="Фильм" />
-                        <TableColumn prefWidth="71.466796875" text="Цена" />
+                      <TableColumn fx:id="dateScheduleLittle" prefWidth="75.0" text="Число" />
+                      <TableColumn fx:id="timeScheduleLittle" prefWidth="75.0" text="Время" />
+                        <TableColumn fx:id="movieScheduleLittle" prefWidth="156.533203125" text="Фильм" />
+                        <TableColumn fx:id="priceScheduleLittle" prefWidth="71.466796875" text="Цена, р" />
                     </columns>
                   </TableView>
                   <TableView fx:id="movieScheduleTable" layoutX="347.0" layoutY="162.0" prefHeight="214.0" prefWidth="200.0">
@@ -1220,6 +1187,39 @@
                     </columns>
                   </TableView>
                   <TextField fx:id="searchMovieScheduleField" layoutX="29.0" layoutY="284.0" onAction="#searchMovieSchedule" prefHeight="32.0" prefWidth="194.0" promptText="🔍 Поиск фильма" styleClass="textSecond" />
+               </children>
+            </Pane>
+            <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="70.0" layoutY="83.0" prefHeight="43.0" prefWidth="871.0">
+                     <children>
+                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resource/img/search.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="32.0" prefWidth="834.0" styleClass="textSecond" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="scheduleTable" layoutX="70.0" layoutY="130.0" prefHeight="467.0" prefWidth="871.0">
+                    <columns>
+                      <TableColumn fx:id="dateSchedule" prefWidth="107.19998168945312" text="Дата показа" />
+                      <TableColumn fx:id="timeSchedule" prefWidth="112.0" text="Время начала" />
+                        <TableColumn fx:id="movieTitleSchedule" prefWidth="266.39996337890625" text="Название фильма" />
+                        <TableColumn fx:id="genreSchedule" prefWidth="120.800048828125" text="Жанр" />
+                        <TableColumn fx:id="formatSchedule" prefWidth="87.2000732421875" text="Формат" />
+                        <TableColumn fx:id="ageSchedule" prefWidth="77.599853515625" text="Возраст" />
+                        <TableColumn fx:id="priceSchedule" prefWidth="87.2000732421875" text="Стоимость" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="106.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Просмотр занятых мест" />
+                  <Button layoutX="361.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Удалить фильм из расписания" />
+                  <Button layoutX="666.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Редактировать расписание" />
                </children>
             </Pane>
          </children>

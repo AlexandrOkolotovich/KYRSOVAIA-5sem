@@ -135,6 +135,14 @@ public class MonoThreadClientHandler implements Runnable {
                             AdminCommand.addMovieInSchedule();
                             break;
                         }
+                        case "timeMatchCheck":{
+                            CheckCommand.timeMatchCheck();
+                            break;
+                        }
+                        case "getNewSchedule":{
+                            AdminCommand.getNewSchedule();
+                            break;
+                        }
                         case "back": {
                             menu = "back";
                             break;

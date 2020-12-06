@@ -28,6 +28,9 @@ public class Schedule {
         this.price = price;
     }
 
+    public Schedule() {
+    }
+
     public int getIdschedule() {
         return idschedule;
     }

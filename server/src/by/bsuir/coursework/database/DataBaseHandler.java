@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.util.Calendar;
 
 public class DataBaseHandler extends Configs {
     Connection dbConnection;
@@ -253,14 +254,61 @@ public class DataBaseHandler extends Configs {
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+
             prSt.setInt(1, schedule.getMovie_idmovie());
-            prSt.setDate(2, schedule.getSessionDate());
-            prSt.setTime(3, schedule.getSessionTime());
+            prSt.setDate(2, schedule.getSessionDate(), Calendar.getInstance());
+            prSt.setTime(3, schedule.getSessionTime(), Calendar.getInstance());
             prSt.setString(4, schedule.getFormat());
             prSt.setDouble(5, schedule.getPrice());
             prSt.executeUpdate();
         } catch (SQLException | ClassNotFoundException throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    public ResultSet timeMatchExist(Schedule schedule){
+        ResultSet resSet = null;
+        String select = "SELECT * FROM "+ Const.SCHEDULE_TABLE + " WHERE "+ Const.SCHEDULE_SESSION_DATE + "= ? AND " + Const.SCHEDULE_SESSION_TIME +
+                "= ?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setDate(1, schedule.getSessionDate(), Calendar.getInstance());
+            prSt.setTime(2, schedule.getSessionTime(), Calendar.getInstance());
+
+            resSet = prSt.executeQuery();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+        return resSet;
+    }
+
+    public ResultSet getNewSchedule(){
+        ResultSet resSet = null;
+
+        String select = "SELECT " + Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_ID + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_SESSION_DATE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_SESSION_TIME + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_TITLE + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_GENRE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_FORMAT + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_AGE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_PRICE +
+                " FROM " + Const.SCHEDULE_TABLE + ", " + Const.MOVIE_TABLE +
+                " WHERE " + Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_MOVIE_ID + "=" +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_ID +
+                " ORDER BY "+ Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_ID + " DESC LIMIT 1";
+
+        try {
+            PreparedStatement prSt  =  getDbConnection().prepareStatement(select);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return resSet;
     }
 }
