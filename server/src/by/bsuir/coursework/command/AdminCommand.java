@@ -207,4 +207,14 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         send(price);
     }
 
+    public static void sendScheduleData(){
+        DataBaseHandler handler = new DataBaseHandler();
+        String schedule = handler.getSchedule();
+        try {
+            send(schedule);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

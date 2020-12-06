@@ -104,6 +104,7 @@ public class MonoThreadClientHandler implements Runnable {
             AdminCommand.sendUsersData();
             AdminCommand.sendCinemaInfo();
             AdminCommand.sendMoviesData();
+            AdminCommand.sendScheduleData();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();

@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -204,6 +205,23 @@ public class ControllerAdmin {
     @FXML
     private DatePicker dateField;
 
+    javafx.util.Callback<DatePicker, DateCell> callB = new javafx.util.Callback<DatePicker, DateCell>() {
+        @Override
+        public DateCell call(final DatePicker param) {
+            return new DateCell() {
+                @Override
+                public void updateItem(LocalDate item, boolean empty) {
+                    super.updateItem(item, empty); //To change body of generated methods, choose Tools | Templates.
+                    LocalDate today = LocalDate.now();
+                    setDisable(empty || item.compareTo(today) < 0);
+                }
+
+            };
+        }
+
+    };
+
+
     @FXML
     private TableView<MovieInf> movieScheduleTable;
 
@@ -265,8 +283,6 @@ public class ControllerAdmin {
     @FXML
     private TableColumn<ScheduleInf, Double> priceSchedule;
 
-
-    //public ControllerAdmin() {}
 
     @FXML
     void handleCliks(ActionEvent event) {
@@ -332,7 +348,8 @@ public class ControllerAdmin {
         userInTable();
         initCinemaInfo();
         movieInTable();
-        initMovieScheduleTable();
+        scheduleInTable();
+
 
         timeComboBox.setItems(timeList);
         formatComboBox.setItems(formatList);
@@ -369,6 +386,9 @@ public class ControllerAdmin {
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
         });
+
+        dateField.setDayCellFactory(callB);
+
     }
 
     private void initClock() {
@@ -510,7 +530,7 @@ public class ControllerAdmin {
 
         CollectionMovie.getInstance().fillNewData();
         setMovieInTable();
-       // initMovieScheduleTable();
+        initMovieScheduleTable();
     }
 
     void movieInTable(){
@@ -602,7 +622,7 @@ public class ControllerAdmin {
         String sessionTime = timeComboBox.getValue();
         String format = formatComboBox.getValue();
         String price = priceField.getText();
-
+        
         if (sessionDate.isEmpty()) {
             key = false;
             alertString+= "Не выбрана дата!\n";
@@ -688,7 +708,6 @@ public class ControllerAdmin {
         priceScheduleLittle.setCellValueFactory(new PropertyValueFactory<>("price"));
         scheduleLittleTable.setItems(CollectionSchedule.getInstance().getSchedules());
 
-
     }
 
     @FXML
@@ -704,6 +723,12 @@ public class ControllerAdmin {
             });
             movieScheduleTable.setItems(filterMovieSchedule);
         });
+    }
+
+    void scheduleInTable(){
+        CollectionSchedule.getInstance().fillData();
+        setScheduleInTable();
+        setScheduleInLittleTable();
     }
 
 

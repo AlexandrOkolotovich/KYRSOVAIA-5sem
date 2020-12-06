@@ -200,7 +200,6 @@ public class DataBaseHandler extends Configs {
         JSONObject movieJson;
         JSONArray movies = new JSONArray();
         try {
-
             String select = "SELECT * FROM "+Const.MOVIE_TABLE;
             PreparedStatement prep = getDbConnection().prepareStatement(select);
             ResultSet rs = prep.executeQuery();
@@ -310,5 +309,60 @@ public class DataBaseHandler extends Configs {
         }
 
         return resSet;
+    }
+
+    public String getSchedule(){
+        Schedule schedule;
+        Movie movie;
+        JSONObject scheduleJson;
+        JSONArray schedules = new JSONArray();
+
+        String select = "SELECT " + Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_ID + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_SESSION_DATE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_SESSION_TIME + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_TITLE + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_GENRE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_FORMAT + ", " +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_AGE + ", " +
+                Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_PRICE +
+                " FROM " + Const.SCHEDULE_TABLE + ", " + Const.MOVIE_TABLE +
+                " WHERE " + Const.SCHEDULE_TABLE + "." + Const.SCHEDULE_MOVIE_ID + "=" +
+                Const.MOVIE_TABLE + "." + Const.MOVIE_ID;
+
+        PreparedStatement prSt = null;
+        try {
+            prSt = getDbConnection().prepareStatement(select);
+
+            ResultSet rs = prSt.executeQuery();
+
+            while (rs.next()){
+                schedule = new Schedule();
+                movie = new Movie();
+                schedule.setIdschedule(rs.getInt(1));
+                schedule.setSessionDate(rs.getDate(2));
+                schedule.setSessionTime(rs.getTime(3));
+                movie.setMovieTitle(rs.getString(4));
+                movie.setGenre(rs.getString(5));
+                schedule.setFormat(rs.getString(6));
+                movie.setAge(rs.getString(7));
+                schedule.setPrice(rs.getInt(8));
+
+                scheduleJson = new JSONObject();
+                scheduleJson.put("idschedule", schedule.getIdschedule());
+                scheduleJson.put("sessionDate", schedule.getSessionDate());
+                scheduleJson.put("sessionTime", schedule.getSessionTime());
+                scheduleJson.put("movieTitle", movie.getMovieTitle());
+                scheduleJson.put("genre", movie.getGenre());
+                scheduleJson.put("format", schedule.getFormat());
+                scheduleJson.put("age", movie.getAge());
+                scheduleJson.put("price", schedule.getPrice());
+
+                schedules.put( scheduleJson );
+            }
+        } catch (SQLException | ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return schedules.toString();
     }
 }
