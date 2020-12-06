@@ -20,6 +20,14 @@ public class Schedule {
         this.price = price;
     }
 
+    public Schedule(int movie_idmovie, Date sessionDate, Time sessionTime, String format, double price) {
+        this.movie_idmovie = movie_idmovie;
+        this.sessionDate = sessionDate;
+        this.sessionTime = sessionTime;
+        this.format = format;
+        this.price = price;
+    }
+
     public int getIdschedule() {
         return idschedule;
     }

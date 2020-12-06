@@ -11,6 +11,8 @@ import by.bsuir.coursework.entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +28,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
@@ -198,8 +201,33 @@ public class ControllerAdmin {
     @FXML
     private TableColumn<MovieInf, Integer> rating;
 
+    @FXML
+    private DatePicker dateField;
 
-    public ControllerAdmin() { }
+    @FXML
+    private TableView<MovieInf> movieScheduleTable;
+
+    @FXML
+    private TableColumn<MovieInf, String> movieSchedule;
+
+    @FXML
+    private TextField searchMovieScheduleField;
+
+    @FXML
+    private ComboBox<String> timeComboBox;
+
+    ObservableList<String> timeList = FXCollections.observableArrayList("08:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00", "23:00", "01:00");//еще добавить
+
+    @FXML
+    private ComboBox<String> formatComboBox;
+
+    ObservableList<String> formatList = FXCollections.observableArrayList("3D", "2D");
+
+    @FXML
+    private TextField priceField;
+
+
+    //public ControllerAdmin() {}
 
     @FXML
     void handleCliks(ActionEvent event) {
@@ -265,6 +293,10 @@ public class ControllerAdmin {
         userInTable();
         initCinemaInfo();
         movieInTable();
+        initMovieScheduleTable();
+
+        timeComboBox.setItems(timeList);
+        formatComboBox.setItems(formatList);
 
         closeButton.setOnMouseClicked(mouseEvent -> {
             Stage stages = (Stage) closeButton.getScene().getWindow();
@@ -365,7 +397,6 @@ public class ControllerAdmin {
         Connect.send(pf2);
         Connect.send(pf3);
         Connect.send(pf4);
-
     }
 
     @FXML
@@ -460,6 +491,11 @@ public class ControllerAdmin {
         movieTable.setItems(CollectionMovie.getInstance().getMovies());
     }
 
+    void initMovieScheduleTable(){
+        movieSchedule.setCellValueFactory(new PropertyValueFactory<>("movieTitle"));
+        movieScheduleTable.setItems(CollectionMovie.getInstance().getMovies());
+    }
+
     @FXML
     void clearMovie(ActionEvent event) {
         movieTitleField.setText("");
@@ -500,6 +536,71 @@ public class ControllerAdmin {
         } else {
             return true;
         }
+    }
+
+    @FXML
+    void addMovieInSchedule(ActionEvent event) {
+        boolean key = true;
+
+        LocalDate movieDate = dateField.getValue();
+        String sessionDate = movieDate.toString();
+        MovieInf selectedMovie = (MovieInf) movieScheduleTable.getSelectionModel().getSelectedItem();
+        String movieIdSchedule = String.valueOf(selectedMovie.getIdmovie());
+        String sessionTime = timeComboBox.getValue();
+        String format = formatComboBox.getValue();
+        String price = priceField.getText();
+
+        if (sessionDate.isEmpty()) {
+            key = false;
+        }
+        if (movieIdSchedule.isEmpty()) {
+            key = false;
+        }
+        if (sessionTime.isEmpty()) {
+            key = false;
+        }
+        if (format.isEmpty()) {
+            key = false;
+        }
+
+        if (price.isEmpty()  || price.length() > 4 || !validateNum(price)) {//сделать проверку на Double
+            key = false;
+        }
+        if(key){
+            Connect.send("addMovieInSchedule");
+            Connect.send(movieIdSchedule);
+            Connect.send(sessionDate);
+            Connect.send(sessionTime);
+            Connect.send(format);
+            Connect.send(price);
+
+            //fillInTableNewMovie();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Успех");
+            alert.setHeaderText("Фильм добавлен в расписание!");
+            alert.showAndWait();
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Фильм не добавлен в расписание!");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void searchMovieSchedule(ActionEvent event) {
+        FilteredList<MovieInf> filterMovieSchedule;
+        filterMovieSchedule = new FilteredList<>(CollectionMovie.getInstance().getMovies(), e->true);
+        searchMovieScheduleField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterMovieSchedule.setPredicate((MovieInf movie)->{
+
+                String newVal = newValue.toLowerCase();
+                return  movie.getMovieTitle().toLowerCase().contains(newVal);
+
+            });
+            movieScheduleTable.setItems(filterMovieSchedule);
+        });
     }
 
 

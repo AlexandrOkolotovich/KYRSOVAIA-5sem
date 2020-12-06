@@ -245,4 +245,22 @@ public class DataBaseHandler extends Configs {
         prSt.setInt(1,movieId);
         prSt.executeUpdate();
     }
+
+    public void addNewMovieInSchedule(Schedule schedule){
+        String insert = "INSERT INTO " + Const.SCHEDULE_TABLE + "(" + Const.SCHEDULE_MOVIE_ID + "," + Const.SCHEDULE_SESSION_DATE + "," +
+                Const.SCHEDULE_SESSION_TIME + "," + Const.SCHEDULE_FORMAT + "," + Const.SCHEDULE_PRICE + ")" +
+                "VALUES(?,?,?,?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setInt(1, schedule.getMovie_idmovie());
+            prSt.setDate(2, schedule.getSessionDate());
+            prSt.setTime(3, schedule.getSessionTime());
+            prSt.setString(4, schedule.getFormat());
+            prSt.setDouble(5, schedule.getPrice());
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+    }
 }

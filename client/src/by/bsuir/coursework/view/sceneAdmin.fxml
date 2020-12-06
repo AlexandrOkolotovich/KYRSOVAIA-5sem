@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -741,62 +740,6 @@
                   </Text>
                </children>
             </Pane>
-            <Pane fx:id="makeSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-               <children>
-                  <Label layoutX="291.0" layoutY="19.0" text="Составить расписание" textFill="#3ab56b">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Label>
-                  <DatePicker layoutX="351.0" layoutY="109.0" prefHeight="25.0" prefWidth="122.0" showWeekNumbers="true" styleClass="textSecond" />
-                  <ListView layoutX="349.0" layoutY="157.0" prefHeight="230.0" prefWidth="174.0" />
-                  <ComboBox layoutX="351.0" layoutY="410.0" prefHeight="32.0" prefWidth="114.0" styleClass="textSecond" />
-                  <Label layoutX="29.0" layoutY="109.0" prefHeight="21.0" prefWidth="261.0" text="Выберите дату проведения сеанса">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="29.0" layoutY="251.0" prefHeight="21.0" prefWidth="218.0" text="Выберите фильм из списка">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="35.0" layoutY="416.0" prefHeight="21.0" prefWidth="291.0" text="Выберите время проведения сеанса">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="35.0" layoutY="510.0" prefHeight="21.0" prefWidth="232.0" text="Добавте цену билета на сеанс">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="35.0" layoutY="461.0" prefHeight="21.0" prefWidth="273.0" text="Выберите формат">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="349.0" layoutY="455.0" prefHeight="32.0" prefWidth="114.0" styleClass="textSecond" />
-                  <TextField layoutX="354.0" layoutY="508.0" prefHeight="32.0" prefWidth="71.0" styleClass="textSecond" />
-                  <Button layoutX="154.0" layoutY="573.0" mnemonicParsing="false" styleClass="buttonAction" text="Добавить фильм в расписание">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Text layoutX="429.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="р.">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <TableView layoutX="588.0" layoutY="117.0" prefHeight="491.0" prefWidth="382.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Число" />
-                      <TableColumn prefWidth="75.0" text="Время" />
-                        <TableColumn prefWidth="156.533203125" text="Фильм" />
-                        <TableColumn prefWidth="71.466796875" text="Цена" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
             <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
             <Pane fx:id="listUsersPane" prefHeight="720.0" prefWidth="982.0" style="-fx-background-color: #e6e6e6;">
                <children>
@@ -1216,6 +1159,67 @@
                         </ImageView>
                      </children>
                   </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="makeSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Label layoutX="291.0" layoutY="19.0" text="Составить расписание" textFill="#3ab56b">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateField" editable="false" layoutX="351.0" layoutY="109.0" prefHeight="25.0" prefWidth="122.0" showWeekNumbers="true" styleClass="textSecond" />
+                  <ComboBox fx:id="timeComboBox" layoutX="351.0" layoutY="410.0" prefHeight="32.0" prefWidth="114.0" promptText="Время" styleClass="textSecond" />
+                  <Label layoutX="29.0" layoutY="109.0" prefHeight="21.0" prefWidth="261.0" text="Выберите дату проведения сеанса">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="29.0" layoutY="251.0" prefHeight="21.0" prefWidth="218.0" text="Выберите фильм из списка">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="416.0" prefHeight="21.0" prefWidth="291.0" text="Выберите время проведения сеанса">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="510.0" prefHeight="21.0" prefWidth="232.0" text="Добавте цену билета на сеанс">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="461.0" prefHeight="21.0" prefWidth="273.0" text="Выберите формат">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="formatComboBox" layoutX="351.0" layoutY="455.0" prefHeight="32.0" prefWidth="114.0" promptText="Формат" styleClass="textSecond" />
+                  <TextField fx:id="priceField" layoutX="354.0" layoutY="508.0" prefHeight="32.0" prefWidth="71.0" styleClass="textSecond" />
+                  <Button layoutX="154.0" layoutY="573.0" mnemonicParsing="false" onAction="#addMovieInSchedule" styleClass="buttonAction" text="Добавить фильм в расписание">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Text layoutX="429.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="р.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <TableView layoutX="588.0" layoutY="117.0" prefHeight="491.0" prefWidth="382.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Число" />
+                      <TableColumn prefWidth="75.0" text="Время" />
+                        <TableColumn prefWidth="156.533203125" text="Фильм" />
+                        <TableColumn prefWidth="71.466796875" text="Цена" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="movieScheduleTable" layoutX="347.0" layoutY="162.0" prefHeight="214.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="movieSchedule" prefWidth="184.0001220703125" text="Фильмы" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchMovieScheduleField" layoutX="29.0" layoutY="284.0" onAction="#searchMovieSchedule" prefHeight="32.0" prefWidth="194.0" promptText="🔍 Поиск фильма" styleClass="textSecond" />
                </children>
             </Pane>
          </children>

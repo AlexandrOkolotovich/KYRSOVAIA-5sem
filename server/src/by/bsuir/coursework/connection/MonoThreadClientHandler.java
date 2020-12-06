@@ -99,10 +99,6 @@ public class MonoThreadClientHandler implements Runnable {
     private void openMenuAdmin(){
         String menu = "work";
 
-       // DataBaseHandler handler = new DataBaseHandler();
-        //String users = handler.getUsers();
-
-
         try {
             //send(users);
             AdminCommand.sendUsersData();
@@ -133,6 +129,10 @@ public class MonoThreadClientHandler implements Runnable {
                         }
                         case "deleteMovie":{
                             AdminCommand.deleteMovie();
+                            break;
+                        }
+                        case "addMovieInSchedule":{
+                            AdminCommand.addMovieInSchedule();
                             break;
                         }
                         case "back": {

@@ -2,11 +2,15 @@ package by.bsuir.coursework.command;
 
 import by.bsuir.coursework.connection.MonoThreadClientHandler;
 import by.bsuir.coursework.database.DataBaseHandler;
+import by.bsuir.coursework.database.Schedule;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public abstract class AdminCommand extends MonoThreadClientHandler {
@@ -52,8 +56,6 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         send(paragraph2);
         send(paragraph3);
         send(paragraph4);
-
-
     }
 
     public static void updateCInfo() throws SQLException, ClassNotFoundException {
@@ -85,6 +87,7 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
             String t = s[5];
             int time = Integer.parseInt(t);
             String description = get();
+
             DataBaseHandler handler = new DataBaseHandler();
             handler.addNewMovie(movieTitle, productionYear, country, genre, director, age, time, description);
         }
@@ -149,6 +152,23 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         DataBaseHandler handler = new DataBaseHandler();
 
         handler.deleteMovie(id);
+    }
+
+    public static void addMovieInSchedule(){
+        String idMovieSchedule = get();
+        int movie_idmovie = Integer.parseInt(idMovieSchedule);
+        String date = get();
+        Date sessionDate = Date.valueOf(date);
+        String time = get();
+        time+=":00";
+        Time sessionTime = Time.valueOf(time);
+        String format = get();
+        String p = get();
+        Double price = Double.valueOf(p);
+
+        DataBaseHandler handler = new DataBaseHandler();
+        Schedule schedule = new Schedule(movie_idmovie, sessionDate, sessionTime, format, price);
+        handler.addNewMovieInSchedule(schedule);
     }
 
 }
