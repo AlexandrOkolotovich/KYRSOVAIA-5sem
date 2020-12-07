@@ -88,7 +88,7 @@
                         <Image url="@../resource/img/useruser.png" />
                     </image>
                     <VBox.margin>
-                        <Insets left="45.0" top="20.0" />
+                        <Insets left="45.0" top="200.0" />
                     </VBox.margin>
                 </ImageView>
                 <Label fx:id="userLogin" text="Alex">
@@ -96,7 +96,7 @@
                         <Font size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="120.0" top="10.0" />
+                        <Insets left="110.0" top="10.0" />
                     </VBox.margin>
                 </Label>
             </children>
@@ -104,131 +104,6 @@
         <StackPane layoutX="284.0" layoutY="31.0" prefHeight="715.0" prefWidth="994.0">
             <children>
                 <Pane fx:id="estimateLossesPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;" />
-                <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-                    <children>
-                        <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
-                            <font>
-                                <Font size="34.0" />
-                            </font>
-                        </Label>
-                        <HBox layoutX="70.0" layoutY="83.0" prefHeight="43.0" prefWidth="871.0">
-                            <children>
-                                <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resource/img/search.png" />
-                                    </image>
-                                </ImageView>
-                                <TextField fx:id="searchScheduleField" onAction="#searchSchedule" prefHeight="32.0" prefWidth="830.0" promptText="Поиск" styleClass="textSecond" />
-                            </children>
-                        </HBox>
-                        <TableView fx:id="scheduleTable" layoutX="70.0" layoutY="130.0" prefHeight="467.0" prefWidth="871.0">
-                            <columns>
-                                <TableColumn fx:id="dateSchedule" prefWidth="107.19998168945312" text="Дата показа" />
-                                <TableColumn fx:id="timeSchedule" prefWidth="112.0" text="Время начала" />
-                                <TableColumn fx:id="movieTitleSchedule" prefWidth="266.39996337890625" text="Название фильма" />
-                                <TableColumn fx:id="genreSchedule" prefWidth="120.800048828125" text="Жанр" />
-                                <TableColumn fx:id="formatSchedule" prefWidth="87.2000732421875" text="Формат" />
-                                <TableColumn fx:id="ageSchedule" prefWidth="71.199951171875" text="Возраст" />
-                                <TableColumn fx:id="priceSchedule" prefWidth="88.0" text="Стоимость" />
-                            </columns>
-                        </TableView>
-                        <Button layoutX="106.0" layoutY="635.0" mnemonicParsing="false" styleClass="buttonAction" text="Просмотр занятых мест" />
-                    </children>
-                </Pane>
-                <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
-                    <children>
-                        <Label layoutX="292.0" text="Ваша информация" textFill="#3ab56b">
-                            <font>
-                                <Font size="34.0" />
-                            </font>
-                        </Label>
-                        <Pane layoutX="574.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
-                            <children>
-                                <Label fx:id="dateTime" layoutX="97.0" layoutY="14.0" prefHeight="53.0" prefWidth="246.0" text="2020-12-01 19:41:25" textFill="#155064">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Label>
-                                <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
-                                <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Текущее время" textAlignment="CENTER" textFill="#155064">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resource/img/calendar.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                        </Pane>
-                        <Pane layoutX="80.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
-                            <children>
-                                <Label fx:id="moneyUser" layoutX="152.0" layoutY="14.0" prefHeight="53.0" prefWidth="44.0" text="600" textFill="#155064">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Label>
-                                <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
-                                <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Общая сумма" textAlignment="CENTER" textFill="#155064">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resource/img/money.png" />
-                                    </image>
-                                </ImageView>
-                                <Label fx:id="dateTime11" layoutX="202.0" layoutY="14.0" prefHeight="53.0" prefWidth="81.0" text="руб." textFill="#155064">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </Pane>
-                        <Pane layoutX="215.0" layoutY="332.0" prefHeight="143.0" prefWidth="488.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
-                            <children>
-                                <Label fx:id="userMail" layoutX="139.0" layoutY="14.0" prefHeight="53.0" prefWidth="308.0" text="admin@mail.ru" textFill="#155064">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Label>
-                                <Line endX="349.79998779296875" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
-                                <Label layoutX="159.0" layoutY="83.0" prefHeight="53.0" prefWidth="232.0" text="Электронная почта" textAlignment="CENTER" textFill="#155064">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resource/img/mail.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                        </Pane>
-                        <Pane layoutX="604.0" layoutY="530.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
-                            <children>
-                                <Label fx:id="userTel" layoutX="108.0" layoutY="10.0" prefHeight="53.0" prefWidth="203.0" text="+375111111111" textFill="#155064">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Label>
-                                <Line endX="223.7999267578125" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-17.79998779296875" startY="-18.0" />
-                                <Label layoutX="125.0" layoutY="79.0" prefHeight="53.0" prefWidth="203.0" text="Номер телефона" textAlignment="CENTER" textFill="#155064">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resource/img/numtel.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                        </Pane>
-                    </children>
-                </Pane>
                 <Pane fx:id="placesCinemaPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
                     <children>
                         <Label layoutX="366.0" layoutY="7.0" text="Места в зале" textFill="#3ab56b">
@@ -778,7 +653,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Text>
-                        <Text layoutX="366.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Мстители: Финал" wrappingWidth="222.79998779296875">
+                        <Text fx:id="movieTitleText" layoutX="366.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Мстители: Финал" wrappingWidth="222.79998779296875">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -788,7 +663,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text layoutX="704.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.55">
+                  <Text fx:id="sessionPriceText" layoutX="704.0" layoutY="576.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5.55">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -884,6 +759,131 @@
                                 <TextField fx:id="searchMovieField" onAction="#searchMovie" prefHeight="32.0" prefWidth="873.0" promptText="Поиск" styleClass="textSecond" />
                             </children>
                         </HBox>
+                    </children>
+                </Pane>
+                <Pane fx:id="viewSchedulePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+                    <children>
+                        <Label layoutX="323.0" layoutY="14.0" text="Просмотр расписания" textFill="#3ab56b">
+                            <font>
+                                <Font size="34.0" />
+                            </font>
+                        </Label>
+                        <HBox layoutX="70.0" layoutY="83.0" prefHeight="43.0" prefWidth="871.0">
+                            <children>
+                                <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resource/img/search.png" />
+                                    </image>
+                                </ImageView>
+                                <TextField fx:id="searchScheduleField" onAction="#searchSchedule" prefHeight="32.0" prefWidth="830.0" promptText="Поиск" styleClass="textSecond" />
+                            </children>
+                        </HBox>
+                        <TableView fx:id="scheduleTable" layoutX="70.0" layoutY="130.0" prefHeight="467.0" prefWidth="871.0">
+                            <columns>
+                                <TableColumn fx:id="dateSchedule" prefWidth="107.19998168945312" text="Дата показа" />
+                                <TableColumn fx:id="timeSchedule" prefWidth="112.0" text="Время начала" />
+                                <TableColumn fx:id="movieTitleSchedule" prefWidth="266.39996337890625" text="Название фильма" />
+                                <TableColumn fx:id="genreSchedule" prefWidth="120.800048828125" text="Жанр" />
+                                <TableColumn fx:id="formatSchedule" prefWidth="87.2000732421875" text="Формат" />
+                                <TableColumn fx:id="ageSchedule" prefWidth="71.199951171875" text="Возраст" />
+                                <TableColumn fx:id="priceSchedule" prefWidth="88.0" text="Стоимость" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="440.0" layoutY="637.0" mnemonicParsing="false" onAction="#choosePlace" styleClass="buttonAction" text="Купить билет" />
+                    </children>
+                </Pane>
+                <Pane fx:id="userPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+                    <children>
+                        <Label layoutX="292.0" text="Ваша информация" textFill="#3ab56b">
+                            <font>
+                                <Font size="34.0" />
+                            </font>
+                        </Label>
+                        <Pane layoutX="574.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                            <children>
+                                <Label fx:id="dateTime" layoutX="97.0" layoutY="14.0" prefHeight="53.0" prefWidth="246.0" text="2020-12-01 19:41:25" textFill="#155064">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                                <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Текущее время" textAlignment="CENTER" textFill="#155064">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resource/img/calendar.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="80.0" layoutY="134.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                            <children>
+                                <Label fx:id="moneyUser" layoutX="152.0" layoutY="14.0" prefHeight="53.0" prefWidth="44.0" text="600" textFill="#155064">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="233.4000244140625" endY="-17.999984741210938" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                                <Label layoutX="145.0" layoutY="80.0" prefHeight="53.0" prefWidth="174.0" text="Общая сумма" textAlignment="CENTER" textFill="#155064">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resource/img/money.png" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="dateTime11" layoutX="202.0" layoutY="14.0" prefHeight="53.0" prefWidth="81.0" text="руб." textFill="#155064">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="215.0" layoutY="332.0" prefHeight="143.0" prefWidth="488.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                            <children>
+                                <Label fx:id="userMail" layoutX="139.0" layoutY="14.0" prefHeight="53.0" prefWidth="308.0" text="admin@mail.ru" textFill="#155064">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="349.79998779296875" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-29.0" startY="-17.999984741210938" />
+                                <Label layoutX="159.0" layoutY="83.0" prefHeight="53.0" prefWidth="232.0" text="Электронная почта" textAlignment="CENTER" textFill="#155064">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resource/img/mail.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="604.0" layoutY="530.0" prefHeight="143.0" prefWidth="357.0" style="-fx-background-color: #16e279; -fx-background-radius: 10;">
+                            <children>
+                                <Label fx:id="userTel" layoutX="108.0" layoutY="10.0" prefHeight="53.0" prefWidth="203.0" text="+375111111111" textFill="#155064">
+                                    <font>
+                                        <Font size="26.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="223.7999267578125" endY="-18.0" layoutX="115.0" layoutY="97.0" startX="-17.79998779296875" startY="-18.0" />
+                                <Label layoutX="125.0" layoutY="79.0" prefHeight="53.0" prefWidth="203.0" text="Номер телефона" textAlignment="CENTER" textFill="#155064">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="60.0" fitWidth="72.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resource/img/numtel.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
                     </children>
                 </Pane>
             </children>

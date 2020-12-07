@@ -8,6 +8,7 @@ import by.bsuir.coursework.connection.Connect;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -158,6 +160,12 @@ public class ControllerUser {
     private TextField searchMovieField;
 
     @FXML
+    private Text movieTitleText;
+
+    @FXML
+    private Text sessionPriceText;
+
+    @FXML
     void initialize() {
 
         initClock();
@@ -287,11 +295,55 @@ public class ControllerUser {
 
     @FXML
     void searchMovie(ActionEvent event) {
+        FilteredList<MovieInf> filterMovie;
+        filterMovie = new FilteredList<>(CollectionMovie.getInstance().getMovies(), e->true);
+        searchMovieField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterMovie.setPredicate((MovieInf movie)->{
 
+                String newVal = newValue.toLowerCase();
+                return  movie.getMovieTitle().toLowerCase().contains(newVal)
+                        || movie.getAge().toLowerCase().contains(newVal)
+                        || movie.getDirector().toLowerCase().contains(newVal)
+                        || movie.getGenre().toLowerCase().contains(newVal)
+                        || movie.getProductionYear().toString().toLowerCase().contains(newVal)
+                        || movie.getRating().toString().toLowerCase().contains(newVal)
+                        || movie.getTime().toString().toLowerCase().contains(newVal)
+                        || movie.getCountry().toLowerCase().contains(newVal);
+
+            });
+            movieTable.setItems(filterMovie);
+        });
     }
 
     @FXML
     void searchSchedule(ActionEvent event) {
+        FilteredList<ScheduleInf> filterSchedule;
+        filterSchedule = new FilteredList<>(CollectionSchedule.getInstance().getSchedules(), e->true);
+        searchScheduleField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterSchedule.setPredicate((ScheduleInf schedule)->{
 
+                String newVal = newValue.toLowerCase();
+                return  schedule.getMovieTitle().toLowerCase().contains(newVal)
+                        || schedule.getAge().toLowerCase().contains(newVal)
+                        || schedule.getFormat().toLowerCase().contains(newVal)
+                        || schedule.getGenre().toLowerCase().contains(newVal)
+                        || schedule.getPrice().toString().toLowerCase().contains(newVal)
+                        || schedule.getSessionTime().toString().toLowerCase().contains(newVal)
+                        || schedule.getSessionDate().toString().toLowerCase().contains(newVal);
+
+
+            });
+            scheduleTable.setItems(filterSchedule);
+        });
+    }
+
+    @FXML
+    void choosePlace(ActionEvent event) {
+        placesCinemaPane.toFront();
+
+        ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
+       // CollectionSchedule.getInstance().chooseMovie(selectedSchedule);
+        movieTitleText.setText(selectedSchedule.getMovieTitle());
+        sessionPriceText.setText(selectedSchedule.getPrice().toString());
     }
 }

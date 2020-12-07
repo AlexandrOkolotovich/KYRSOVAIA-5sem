@@ -239,6 +239,10 @@
     -fx-background-color: #52cb2d;
 }
 
+.buttonPlace:focused{
+    -fx-background-color: red;
+}
+
 .buttonControl{
     -fx-background-color :   #00ad5f;
 }

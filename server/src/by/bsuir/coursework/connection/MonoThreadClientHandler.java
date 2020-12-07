@@ -1,12 +1,9 @@
 package by.bsuir.coursework.connection;
 
-import by.bsuir.coursework.command.AdminCommand;
+import by.bsuir.coursework.command.MainCommand;
 import by.bsuir.coursework.command.BasicCommand;
 import by.bsuir.coursework.command.CheckCommand;
-import by.bsuir.coursework.database.DataBaseHandler;
-import by.bsuir.coursework.database.Role;
 
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -107,10 +104,10 @@ public class MonoThreadClientHandler implements Runnable {
 
         try {
 
-            AdminCommand.sendUsersData();
-            AdminCommand.sendCinemaInfo();
-            AdminCommand.sendMoviesData();
-            AdminCommand.sendScheduleData();
+            MainCommand.sendUsersData();
+            MainCommand.sendCinemaInfo();
+            MainCommand.sendMoviesData();
+            MainCommand.sendScheduleData();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();
@@ -119,27 +116,27 @@ public class MonoThreadClientHandler implements Runnable {
                 if (menu != null) {
                     switch (menu){
                         case "deleteUser":{
-                            AdminCommand.deleteUser();
+                            MainCommand.deleteUser();
                             break;
                         }
                         case "updateCinemaInfo":{
-                            AdminCommand.updateCInfo();
+                            MainCommand.updateCInfo();
                             break;
                         }
                         case "addMovie":{
-                            AdminCommand.addMovie();
+                            MainCommand.addMovie();
                             break;
                         }
                         case "getNewMovie":{
-                            AdminCommand.getNewMovie();
+                            MainCommand.getNewMovie();
                             break;
                         }
                         case "deleteMovie":{
-                            AdminCommand.deleteMovie();
+                            MainCommand.deleteMovie();
                             break;
                         }
                         case "addMovieInSchedule":{
-                            AdminCommand.addMovieInSchedule();
+                            MainCommand.addMovieInSchedule();
                             break;
                         }
                         case "timeMatchCheck":{
@@ -147,11 +144,11 @@ public class MonoThreadClientHandler implements Runnable {
                             break;
                         }
                         case "getNewSchedule":{
-                            AdminCommand.getNewSchedule();
+                            MainCommand.getNewSchedule();
                             break;
                         }
                         case "deleteSchedule":{
-                            AdminCommand.deleteSchedule();
+                            MainCommand.deleteSchedule();
                             break;
                         }
                         case "back": {
@@ -174,9 +171,9 @@ public class MonoThreadClientHandler implements Runnable {
         try {
 
          //   AdminCommand.sendUsersData();
-            UserCommand.sendCinemaInfo();
-            UserCommand.sendMoviesData();
-            UserCommand.sendScheduleData();
+            MainCommand.sendCinemaInfo();
+            MainCommand.sendMoviesData();
+            MainCommand.sendScheduleData();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();
@@ -194,7 +191,7 @@ public class MonoThreadClientHandler implements Runnable {
                 }
                 else break;
             }
-        } catch (IOException | SQLException | ClassNotFoundException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }

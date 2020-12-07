@@ -10,12 +10,11 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public abstract class AdminCommand extends MonoThreadClientHandler {
+public abstract class MainCommand extends MonoThreadClientHandler {
 
-    public AdminCommand(Socket client) throws IOException {
+    public MainCommand(Socket client) throws IOException {
         super(client);
     }
 

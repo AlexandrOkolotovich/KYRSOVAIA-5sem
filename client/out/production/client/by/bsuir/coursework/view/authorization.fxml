@@ -93,7 +93,11 @@
                         <String fx:value="email" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="220.0" layoutY="235.0" mnemonicParsing="false" onAction="#sendMailForRecovery" prefHeight="37.0" prefWidth="132.0" styleClass="buttonLogin" text="Отправить" />
+                  <Button layoutX="220.0" layoutY="235.0" mnemonicParsing="false" onAction="#sendMailForRecovery" prefHeight="37.0" prefWidth="132.0" styleClass="buttonLogin" text="Отправить">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Hyperlink focusTraversable="false" layoutX="202.0" layoutY="502.0" onAction="#signInLink" styleClass="hLink" text="Go back to authorization" />
                </children>
             </Pane>
