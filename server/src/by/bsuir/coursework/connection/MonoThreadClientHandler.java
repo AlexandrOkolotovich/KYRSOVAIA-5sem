@@ -69,6 +69,11 @@ public class MonoThreadClientHandler implements Runnable {
                         role = "null";
                         break;
                     }
+                    case "passwordRecovery":{
+                        BasicCommand.passwordRecovery();
+                        role = "null";
+                        break;
+                    }
                 }
                 switch (role){
                     case "ADMIN":{
@@ -76,6 +81,7 @@ public class MonoThreadClientHandler implements Runnable {
                         break;
                     }
                     case "USER":{
+                        openMenuUser();
                         break;
                     }
                     case "null":{
@@ -100,7 +106,7 @@ public class MonoThreadClientHandler implements Runnable {
         String menu = "work";
 
         try {
-            //send(users);
+
             AdminCommand.sendUsersData();
             AdminCommand.sendCinemaInfo();
             AdminCommand.sendMoviesData();
@@ -144,6 +150,41 @@ public class MonoThreadClientHandler implements Runnable {
                             AdminCommand.getNewSchedule();
                             break;
                         }
+                        case "deleteSchedule":{
+                            AdminCommand.deleteSchedule();
+                            break;
+                        }
+                        case "back": {
+                            menu = "back";
+                            break;
+                        }
+
+                    }
+                }
+                else break;
+            }
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openMenuUser(){
+        String menu = "work";
+
+        try {
+
+         //   AdminCommand.sendUsersData();
+            UserCommand.sendCinemaInfo();
+            UserCommand.sendMoviesData();
+            UserCommand.sendScheduleData();
+
+            while (!Objects.equals(menu, "back")) {
+                menu = get();
+                System.out.println(menu);
+
+                if (menu != null) {
+                    switch (menu){
+
                         case "back": {
                             menu = "back";
                             break;

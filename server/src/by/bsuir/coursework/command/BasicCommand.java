@@ -1,5 +1,6 @@
 package by.bsuir.coursework.command;
 
+import by.bsuir.coursework.connection.Email;
 import by.bsuir.coursework.connection.MonoThreadClientHandler;
 import by.bsuir.coursework.database.DataBaseHandler;
 import by.bsuir.coursework.database.Role;
@@ -80,5 +81,34 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
             handler.signUpUser(surname, name, login, tel, email, password, role);
 
         }
+    }
+
+    public static void passwordRecovery(){
+        String email = get();
+        String login = null;
+        String password = null;
+
+        DataBaseHandler handler = new DataBaseHandler();
+        User user = new User();
+        user.setEmail(email);
+
+        ResultSet result = handler.passwordRecovery(user);
+
+        int counter = 0;
+        try {
+            while (result.next()) {
+                counter++;
+                login = result.getNString(4);
+                password = result.getNString(7);
+
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        if(counter>=1){
+            Email.mail(email, login, password);
+        }
+
     }
 }

@@ -41,11 +41,11 @@ public class MovieInf {
         this.movieTitle = movieTitle;
     }
 
-    public int getProductionYear() {
+    public Integer getProductionYear() {
         return productionYear;
     }
 
-    public void setProductionYear(int productionYear) {
+    public void setProductionYear(Integer productionYear) {
         this.productionYear = productionYear;
     }
 
@@ -81,11 +81,11 @@ public class MovieInf {
         this.age = age;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
@@ -97,11 +97,11 @@ public class MovieInf {
         this.description = description;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 }

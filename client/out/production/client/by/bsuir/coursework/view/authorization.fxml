@@ -79,6 +79,24 @@
                         <Hyperlink focusTraversable="false" layoutX="176.0" layoutY="538.0" onAction="#signInLink" styleClass="hLink" text="Go back to authorization" />
                     </children>
                 </Pane>
+            <Pane fx:id="recoveryPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e6e6e6;">
+               <children>
+                  <Text layoutX="105.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textCaption" text="ВОССТАНОВЛЕНИЕ ЛОГИНА И ПАРОЛЯ " />
+                  <Text layoutX="52.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите электронную почту для восстановления логина и пароля">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="mailForRecoveryField" layoutX="138.0" layoutY="164.0" prefHeight="23.0" prefWidth="297.0">
+                     <styleClass>
+                        <String fx:value="textFirst" />
+                        <String fx:value="email" />
+                     </styleClass>
+                  </TextField>
+                  <Button layoutX="220.0" layoutY="235.0" mnemonicParsing="false" onAction="#sendMailForRecovery" prefHeight="37.0" prefWidth="132.0" styleClass="buttonLogin" text="Отправить" />
+                  <Hyperlink focusTraversable="false" layoutX="202.0" layoutY="502.0" onAction="#signInLink" styleClass="hLink" text="Go back to authorization" />
+               </children>
+            </Pane>
                 <Pane fx:id="signInPane" prefHeight="588.0" prefWidth="522.0" style="-fx-background-color: #e6e6e6;">
                     <children>
                         <Text layoutX="182.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textCaption" text="ACCOUNT LOGIN" />
@@ -97,7 +115,7 @@
                             </cursor>
                         </Button>
                         <Text layoutX="158.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textForgot" text="Forgot" wrappingWidth="45.11189270019531" />
-                        <Hyperlink focusTraversable="false" layoutX="203.0" layoutY="397.0" styleClass="hLink" text="User name / password?" />
+                        <Hyperlink focusTraversable="false" layoutX="203.0" layoutY="397.0" onAction="#recoveryLink" styleClass="hLink" text="User name / password?" />
                         <Hyperlink fx:id="signUpButton" focusTraversable="false" layoutX="233.0" layoutY="549.0" onAction="#signUpLink" styleClass="hLink" text="SIGN UP" />
                   <Text fx:id="errorText" fill="RED" layoutX="124.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" visible="false" wrappingWidth="266.13671875">
                      <font>

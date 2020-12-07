@@ -2,6 +2,8 @@ package by.bsuir.coursework.database;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Schedule {
     private int idschedule;

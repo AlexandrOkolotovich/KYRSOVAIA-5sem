@@ -81,6 +81,12 @@ public class ControllerAuthorization {
     private Button signInButton;
 
     @FXML
+    private Pane recoveryPane;
+
+    @FXML
+    private TextField mailForRecoveryField;
+
+    @FXML
     void signUpLink() {
         signUpPane.toFront();
     }
@@ -88,6 +94,36 @@ public class ControllerAuthorization {
     @FXML
     void signInLink() {
         signInPane.toFront();
+    }
+
+    @FXML
+    void recoveryLink() {
+        recoveryPane.toFront();
+    }
+
+    @FXML
+    void sendMailForRecovery(ActionEvent event) {
+        boolean key = true;
+
+        String email = mailForRecoveryField.getText();
+
+        if (email.isEmpty() || email.length() < 4 || email.length() > 32 || !checkMail(email)) {
+            key = false;
+        }
+        if(key){
+            Connect.send("passwordRecovery");
+            Connect.send(email);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Успех");
+            alert.setHeaderText("Логин и пароль отправлены на почту!");
+            alert.showAndWait();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Неверно введён пароль!");
+            alert.showAndWait();
+        }
     }
 
     public void signIn(ActionEvent actionEvent) throws IOException {

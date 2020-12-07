@@ -217,4 +217,12 @@ public abstract class AdminCommand extends MonoThreadClientHandler {
         }
     }
 
+    public static void deleteSchedule() throws SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(Objects.requireNonNull(get()));
+
+        DataBaseHandler handler = new DataBaseHandler();
+
+        handler.deleteSchedule(id);
+    }
+
 }

@@ -5,14 +5,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.TimeZone;
+
 
 public class DataBaseHandler extends Configs {
     Connection dbConnection;
 
     public Connection getDbConnection()
             throws ClassNotFoundException, SQLException {
-        String connectionSting="jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName  + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connectionSting="jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName  + "?serverTimezone=Europe/Minsk&useSSL=false";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         dbConnection= DriverManager.getConnection(connectionSting, dbUser, dbPass);
@@ -64,6 +67,20 @@ public class DataBaseHandler extends Configs {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);
             prSt.setString(1, user.getLogin());
             prSt.setString(2, user.getPassword());
+
+            resSet = prSt.executeQuery();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+        return resSet;
+    }
+
+    public ResultSet passwordRecovery(User user){
+        ResultSet resSet = null;
+        String select = "SELECT * FROM "+ Const.USER_TABLE + " WHERE "+ Const.USER_EMAIL + "= ?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, user.getEmail());
 
             resSet = prSt.executeQuery();
         } catch (SQLException | ClassNotFoundException throwable) {
@@ -255,8 +272,8 @@ public class DataBaseHandler extends Configs {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
 
             prSt.setInt(1, schedule.getMovie_idmovie());
-            prSt.setDate(2, schedule.getSessionDate(), Calendar.getInstance());
-            prSt.setTime(3, schedule.getSessionTime(), Calendar.getInstance());
+            prSt.setDate(2, schedule.getSessionDate());
+            prSt.setTime(3, schedule.getSessionTime());
             prSt.setString(4, schedule.getFormat());
             prSt.setDouble(5, schedule.getPrice());
             prSt.executeUpdate();
@@ -271,8 +288,8 @@ public class DataBaseHandler extends Configs {
                 "= ?";
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);
-            prSt.setDate(1, schedule.getSessionDate(), Calendar.getInstance());
-            prSt.setTime(2, schedule.getSessionTime(), Calendar.getInstance());
+            prSt.setDate(1, schedule.getSessionDate());
+            prSt.setTime(2, schedule.getSessionTime());
 
             resSet = prSt.executeQuery();
         } catch (SQLException | ClassNotFoundException throwable) {
@@ -338,6 +355,7 @@ public class DataBaseHandler extends Configs {
             while (rs.next()){
                 schedule = new Schedule();
                 movie = new Movie();
+
                 schedule.setIdschedule(rs.getInt(1));
                 schedule.setSessionDate(rs.getDate(2));
                 schedule.setSessionTime(rs.getTime(3));
@@ -345,7 +363,7 @@ public class DataBaseHandler extends Configs {
                 movie.setGenre(rs.getString(5));
                 schedule.setFormat(rs.getString(6));
                 movie.setAge(rs.getString(7));
-                schedule.setPrice(rs.getInt(8));
+                schedule.setPrice(rs.getDouble(8));
 
                 scheduleJson = new JSONObject();
                 scheduleJson.put("idschedule", schedule.getIdschedule());
@@ -364,5 +382,12 @@ public class DataBaseHandler extends Configs {
         }
 
         return schedules.toString();
+    }
+
+    public void deleteSchedule(Integer scheduleId) throws SQLException, ClassNotFoundException {
+        String deletion = "DELETE FROM " + Const.SCHEDULE_TABLE+ " WHERE "+ Const.SCHEDULE_ID +" = ?";
+        PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
+        prSt.setInt(1, scheduleId);
+        prSt.executeUpdate();
     }
 }

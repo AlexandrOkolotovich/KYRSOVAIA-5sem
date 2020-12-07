@@ -24,7 +24,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -283,6 +282,15 @@ public class ControllerAdmin {
     @FXML
     private TableColumn<ScheduleInf, Double> priceSchedule;
 
+    @FXML
+    private TextField searchMovieField;
+
+    @FXML
+    private TextField searchScheduleField;
+
+    @FXML
+    private DatePicker searchScheduleDateField;
+
 
     @FXML
     void handleCliks(ActionEvent event) {
@@ -404,7 +412,6 @@ public class ControllerAdmin {
         userLogin.setText(Connect.get());
         userMail.setText(Connect.get());
         userTel.setText(Connect.get());
-
     }
 
     private void userInTable() {
@@ -577,6 +584,28 @@ public class ControllerAdmin {
         Connect.send(selectedMovie.getIdmovie());
     }
 
+    @FXML
+    void searchMovie(ActionEvent event) {
+        FilteredList<MovieInf> filterMovie;
+        filterMovie = new FilteredList<>(CollectionMovie.getInstance().getMovies(), e->true);
+        searchMovieField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterMovie.setPredicate((MovieInf movie)->{
+
+                String newVal = newValue.toLowerCase();
+                return  movie.getMovieTitle().toLowerCase().contains(newVal)
+                        || movie.getAge().toLowerCase().contains(newVal)
+                        || movie.getDirector().toLowerCase().contains(newVal)
+                        || movie.getGenre().toLowerCase().contains(newVal)
+                        || movie.getProductionYear().toString().toLowerCase().contains(newVal)
+                        || movie.getRating().toString().toLowerCase().contains(newVal)
+                        || movie.getTime().toString().toLowerCase().contains(newVal)
+                        || movie.getCountry().toLowerCase().contains(newVal);
+
+            });
+            movieTable.setItems(filterMovie);
+        });
+    }
+
     private boolean validateNum(String source) {
         Pattern pattern = Pattern.compile("^([0-9]+)$");
         Matcher matcher = pattern.matcher(source);
@@ -725,11 +754,41 @@ public class ControllerAdmin {
         });
     }
 
+    @FXML
+    void searchSchedule(ActionEvent event) {
+        FilteredList<ScheduleInf> filterSchedule;
+        filterSchedule = new FilteredList<>(CollectionSchedule.getInstance().getSchedules(), e->true);
+        searchScheduleField.textProperty().addListener((observableValue, oldValue, newValue)->{
+            filterSchedule.setPredicate((ScheduleInf schedule)->{
+
+                String newVal = newValue.toLowerCase();
+                return  schedule.getMovieTitle().toLowerCase().contains(newVal)
+                        || schedule.getAge().toLowerCase().contains(newVal)
+                        || schedule.getFormat().toLowerCase().contains(newVal)
+                        || schedule.getGenre().toLowerCase().contains(newVal)
+                        || schedule.getPrice().toString().toLowerCase().contains(newVal)
+                        || schedule.getSessionTime().toString().toLowerCase().contains(newVal)
+                        || schedule.getSessionDate().toString().toLowerCase().contains(newVal);
+
+
+            });
+            scheduleTable.setItems(filterSchedule);
+        });
+    }
+
+
+
     void scheduleInTable(){
         CollectionSchedule.getInstance().fillData();
         setScheduleInTable();
         setScheduleInLittleTable();
     }
 
-
+    @FXML
+    void deleteSchedule(ActionEvent event) {
+        ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
+        CollectionSchedule.getInstance().delete(selectedSchedule);
+        Connect.send("deleteSchedule");
+        Connect.send(selectedSchedule.getIdschedule());
+    }
 }

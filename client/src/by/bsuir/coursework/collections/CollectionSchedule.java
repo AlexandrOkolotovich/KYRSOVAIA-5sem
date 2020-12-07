@@ -75,4 +75,8 @@ public final class CollectionSchedule {
             e.printStackTrace();
         }
     }
+
+    public void delete(ScheduleInf schedule){
+        schedules.remove(schedule);
+    }
 }
