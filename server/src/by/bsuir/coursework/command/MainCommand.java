@@ -2,7 +2,9 @@ package by.bsuir.coursework.command;
 
 import by.bsuir.coursework.connection.MonoThreadClientHandler;
 import by.bsuir.coursework.database.DataBaseHandler;
+import by.bsuir.coursework.database.Order;
 import by.bsuir.coursework.database.Schedule;
+import by.bsuir.coursework.database.Ticket;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -55,6 +57,33 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         send(paragraph2);
         send(paragraph3);
         send(paragraph4);
+    }
+
+    public static void getUserId() throws IOException {
+        String userLogin;
+        String userId = null;
+
+        userLogin = get();
+
+        DataBaseHandler handler = new DataBaseHandler();
+
+        ResultSet result = handler.getUser(userLogin);
+
+        int counter = 0;
+        try {
+            while (result.next()) {
+                counter++;
+
+                userId = result.getString(1);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        if(counter>=1){
+            send(userId);
+        }
+
     }
 
     public static void updateCInfo() throws SQLException, ClassNotFoundException {
@@ -222,6 +251,53 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         DataBaseHandler handler = new DataBaseHandler();
 
         handler.deleteSchedule(id);
+    }
+
+    public static void buyTicket(){
+        int idschedule;
+        int row;
+        int place;
+
+        String id = get();
+        idschedule = Integer.parseInt(id);
+        String r = get();
+        row = Integer.parseInt(r);
+        String p = get();
+        place = Integer.parseInt(p);
+
+        DataBaseHandler handler = new DataBaseHandler();
+        Ticket ticket = new Ticket(idschedule, row, place);
+        handler.addTicket(ticket);
+    }
+
+    public static void getNewTicket() throws SQLException, IOException {
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet result = handler.getNewTicket();
+
+        int id;
+
+        id = result.getInt(1);
+        String idticket = String.valueOf(id);
+
+        send(idticket);
+    }
+
+    public static void makeOrder(){
+        int userid;
+        int ticketid;
+        String paid;
+        String bron;
+
+        String idu = get();
+        userid = Integer.parseInt(idu);
+        String idt = get();
+        ticketid = Integer.parseInt(idt);
+        paid = get();
+        bron = get();
+
+        DataBaseHandler handler = new DataBaseHandler();
+        Order order = new Order(userid, ticketid, paid, bron);
+        handler.addOrder(order);
     }
 
 }

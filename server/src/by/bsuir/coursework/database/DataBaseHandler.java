@@ -89,6 +89,20 @@ public class DataBaseHandler extends Configs {
         return resSet;
     }
 
+    public ResultSet getUser(String userLogin){
+        ResultSet resSet = null;
+        String select = "SELECT * FROM "+ Const.USER_TABLE + " WHERE "+ Const.USER_LOGIN + "= ?";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, userLogin);
+
+            resSet = prSt.executeQuery();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+        return resSet;
+    }
+
     public String getUsers() {
         User user;
         JSONObject userJson;
@@ -389,5 +403,62 @@ public class DataBaseHandler extends Configs {
         PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
         prSt.setInt(1, scheduleId);
         prSt.executeUpdate();
+    }
+
+    public void addTicket(Ticket ticket){
+        String insert = "INSERT INTO " + Const.TICKET_TABLE + "(" + Const.TICKET_SCHEDULE_ID + "," + Const.TICKET_ROW_NUMBER + "," +
+                Const.TICKET_PLACE_NUMBER + ")" +
+                "VALUES(?,?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+
+            prSt.setInt(1, ticket.getSchedule_idschedule());
+            prSt.setInt(2, ticket.getRowNumber());
+            prSt.setInt(3, ticket.getPlaceNumber());
+
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    public ResultSet getNewTicket(){
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + Const.TICKET_TABLE + " ORDER BY " + Const.TICKET_ID + " DESC LIMIT 1";
+
+        try {
+            PreparedStatement prSt  =  getDbConnection().prepareStatement(select);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return resSet;
+    }
+
+    public void addOrder(Order order){
+        String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.ORDER_USERS_ID + "," + Const.ORDER_TICKET_ID + "," +
+                Const.ORDER_PAID + "," + Const.ORDER_BRON + ")" +
+                "VALUES(?,?,?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+
+            prSt.setInt(1, order.getUsers_id());
+            prSt.setInt(2, order.getTicket_idticket());
+            prSt.setString(3, order.getPaid());
+            prSt.setString(4, order.getBron());
+
+
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
     }
 }

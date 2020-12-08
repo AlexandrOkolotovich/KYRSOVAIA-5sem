@@ -181,7 +181,19 @@ public class MonoThreadClientHandler implements Runnable {
 
                 if (menu != null) {
                     switch (menu){
-
+                        case "buyTicket":{
+                            MainCommand.buyTicket();
+                            MainCommand.getNewTicket();
+                            break;
+                        }
+                        case "getUserId":{
+                            MainCommand.getUserId();
+                            break;
+                        }
+                        case "makeOrder":{
+                            MainCommand.makeOrder();
+                            break;
+                        }
                         case "back": {
                             menu = "back";
                             break;

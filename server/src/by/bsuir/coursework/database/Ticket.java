@@ -13,6 +13,12 @@ public class Ticket {
         this.placeNumber = placeNumber;
     }
 
+    public Ticket(int schedule_idschedule, int rowNumber, int placeNumber) {
+        this.schedule_idschedule = schedule_idschedule;
+        this.rowNumber = rowNumber;
+        this.placeNumber = placeNumber;
+    }
+
     public Ticket() {}
 
     public int getIdticket() {

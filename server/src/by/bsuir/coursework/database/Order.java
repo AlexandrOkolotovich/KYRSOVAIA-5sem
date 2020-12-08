@@ -15,6 +15,13 @@ public class Order {
         this.bron = bron;
     }
 
+    public Order(int users_id, int ticket_idticket, String paid, String bron) {
+        this.users_id = users_id;
+        this.ticket_idticket = ticket_idticket;
+        this.paid = paid;
+        this.bron = bron;
+    }
+
     public int getIdorder() {
         return idorder;
     }
