@@ -300,4 +300,17 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         handler.addOrder(order);
     }
 
+    public static void getOccupedPlaces(){
+        String ids = get();
+        int scheduleid = Integer.parseInt(ids);
+
+        DataBaseHandler handler = new DataBaseHandler();
+        String occupiedPlaces = handler.getOccupiedPlaces(scheduleid);
+        try {
+            send(occupiedPlaces);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -639,6 +639,9 @@ public class ControllerUser {
     void choosePlace(ActionEvent event) {
         placesCinemaPane.toFront();
 
+        Connect.send("occupedPlaces");
+
+
         ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
 
         movieTitleText.setText(selectedSchedule.getMovieTitle());
@@ -1044,7 +1047,6 @@ public class ControllerUser {
         Connect.send(place);
 
         String idticket = Connect.get();
-     //   int idticket = Integer.parseInt(idt);
 
         Connect.send("getUserId");
         Connect.send(userLoginName);

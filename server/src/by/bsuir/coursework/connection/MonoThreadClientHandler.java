@@ -194,6 +194,10 @@ public class MonoThreadClientHandler implements Runnable {
                             MainCommand.makeOrder();
                             break;
                         }
+                        case "occupedPlaces":{
+                            MainCommand.getOccupedPlaces();
+                            break;
+                        }
                         case "back": {
                             menu = "back";
                             break;

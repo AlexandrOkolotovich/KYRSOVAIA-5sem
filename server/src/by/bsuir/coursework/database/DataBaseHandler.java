@@ -443,8 +443,8 @@ public class DataBaseHandler extends Configs {
     }
 
     public void addOrder(Order order){
-        String insert = "INSERT INTO " + Const.ORDER_TABLE + "(" + Const.ORDER_USERS_ID + "," + Const.ORDER_TICKET_ID + "," +
-                Const.ORDER_PAID + "," + Const.ORDER_BRON + ")" +
+        String insert = "INSERT " + Const.ORDER_TABLE + "(" + Const.ORDER_USERS_ID + "," + Const.ORDER_TICKET_ID + "," +
+                Const.ORDER_PAID + "," + Const.ORDER_BRON + ") " +
                 "VALUES(?,?,?,?)";
 
         try {
@@ -457,8 +457,49 @@ public class DataBaseHandler extends Configs {
 
 
             prSt.executeUpdate();
+
         } catch (SQLException | ClassNotFoundException throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    public String getOccupiedPlaces(int ticketScheduleId){
+        Ticket ticket;
+        JSONObject ticketJson;
+        JSONArray tickets = new JSONArray();
+        String select = "SELECT * FROM " + Const.TICKET_TABLE + " WHERE " + Const.TICKET_SCHEDULE_ID + "= ?";
+
+        PreparedStatement prSt = null;
+        try {
+            prSt = getDbConnection().prepareStatement(select);
+
+            prSt.setInt(1, ticketScheduleId);
+
+            ResultSet rs = prSt.executeQuery();
+
+            while (rs.next()){
+                ticket = new Ticket();
+
+                ticket.setIdticket(rs.getInt(1));
+                ticket.setSchedule_idschedule(rs.getInt(2));
+                ticket.setRowNumber(rs.getInt(3));
+                ticket.setPlaceNumber(rs.getInt(4));
+
+               // prSt.setInt(1, ticketScheduleId);
+
+
+                ticketJson = new JSONObject();
+                ticketJson.put("idticket", ticket.getIdticket());
+                ticketJson.put("schedule_idschedule", ticket.getSchedule_idschedule());
+                ticketJson.put("rowNumber", ticket.getRowNumber());
+                ticketJson.put("placeNumber", ticket.getPlaceNumber());
+
+                tickets.put( ticketJson );
+            }
+        } catch (SQLException | ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return tickets.toString();
     }
 }
