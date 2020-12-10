@@ -297,6 +297,7 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         handler.addOrder(order);
     }
 
+
     public static void getOccupedPlaces(){
         String ids = get();
         int scheduleid = Integer.parseInt(ids);
@@ -339,14 +340,20 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         String newCash = get();
         double newcash = Double.parseDouble(newCash);
 
-        cash+=newcash;
+        if(cash>=newcash) {
 
-        Solvency solvency = new Solvency(userid, cash);
+            cash += newcash;
 
-        handler.updateBalance(solvency);
+            Solvency solvency = new Solvency(userid, cash);
 
-        String upCash = String.valueOf(cash);
-        send(upCash);
+            handler.updateBalance(solvency);
+
+            String upCash = String.valueOf(cash);
+            send(upCash);
+        }
+        else {
+            send("wrong");
+        }
 
 
     }

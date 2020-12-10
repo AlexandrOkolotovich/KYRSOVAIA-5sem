@@ -1517,16 +1517,38 @@ public class ControllerUser {
 
         String iduser = Connect.get();
 
-        Connect.send("paidOrder");
+        Connect.send("pay");
         Connect.send(iduser);
-        Connect.send(idticket);
-        Connect.send(paid);
-        Connect.send(bron);
+        ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
+        Double price = selectedSchedule.getPrice();
+        price=-price;
+        Connect.send(price);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Успех");
-        alert.setHeaderText("Вы оплатили билет!");
-        alert.showAndWait();
+        String newCash = Connect.get();
+
+        if(newCash.equals("wrong")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Недостаточно денег на счету!");
+            alert.showAndWait();
+            userPane.toFront();
+        }
+        else {
+            System.out.println(newCash);
+            moneyUser.setText(newCash);
+
+            Connect.send("makeOrder");
+            Connect.send(iduser);
+            Connect.send(idticket);
+            Connect.send(paid);
+            Connect.send(bron);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Успех");
+            alert.setHeaderText("Вы оплатили билет!");
+            alert.showAndWait();
+            userPane.toFront();
+        }
     }
 
     void bTicket(){

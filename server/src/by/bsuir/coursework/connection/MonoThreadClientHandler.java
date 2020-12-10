@@ -200,8 +200,9 @@ public class MonoThreadClientHandler implements Runnable {
                             MainCommand.getOccupedPlaces();
                             break;
                         }
-                        case "paidOrder":{
-
+                        case "pay":{
+                            MainCommand.updateUserCash();
+                            break;
                         }
                         case "updateCash":{
                             MainCommand.getUserId();
