@@ -1,10 +1,7 @@
 package by.bsuir.coursework.command;
 
 import by.bsuir.coursework.connection.MonoThreadClientHandler;
-import by.bsuir.coursework.database.DataBaseHandler;
-import by.bsuir.coursework.database.Order;
-import by.bsuir.coursework.database.Schedule;
-import by.bsuir.coursework.database.Ticket;
+import by.bsuir.coursework.database.*;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -311,6 +308,47 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void getUserCash() throws SQLException, IOException {
+        int cash;
+
+        String idu = get();
+        int userid = Integer.parseInt(idu);
+
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet result = handler.getUserCash(userid);
+
+        cash = result.getInt(3);
+        String cashStr = String.valueOf(cash);
+
+        send(cashStr);
+    }
+
+    public static void updateUserCash() throws SQLException, ClassNotFoundException, IOException {
+        double cash;
+
+        String idu = get();
+        int userid = Integer.parseInt(idu);
+
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet result = handler.getUserCash(userid);
+
+        cash = result.getDouble(3);
+
+        String newCash = get();
+        double newcash = Double.parseDouble(newCash);
+
+        cash+=newcash;
+
+        Solvency solvency = new Solvency(userid, cash);
+
+        handler.updateBalance(solvency);
+
+        String upCash = String.valueOf(cash);
+        send(upCash);
+
+
     }
 
 }

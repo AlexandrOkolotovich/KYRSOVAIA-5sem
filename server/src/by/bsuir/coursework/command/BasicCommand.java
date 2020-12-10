@@ -80,6 +80,26 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
             DataBaseHandler handler = new DataBaseHandler();
             handler.signUpUser(surname, name, login, tel, email, password, role);
 
+            ResultSet result = handler.getUser(login);
+            String userId = null;
+            int counter = 0;
+
+            try {
+                while (result.next()) {
+                    counter++;
+                    userId = result.getString(1);
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+
+            if(counter>=1){
+                int uid = Integer.parseInt(userId);
+
+                handler.openCashAccount(uid, 0);
+            }
+
+
         }
     }
 

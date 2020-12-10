@@ -174,6 +174,8 @@ public class MonoThreadClientHandler implements Runnable {
             MainCommand.sendCinemaInfo();
             MainCommand.sendMoviesData();
             MainCommand.sendScheduleData();
+            MainCommand.getUserId();
+            MainCommand.getUserCash();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();
@@ -198,6 +200,14 @@ public class MonoThreadClientHandler implements Runnable {
                             MainCommand.getOccupedPlaces();
                             break;
                         }
+                        case "paidOrder":{
+
+                        }
+                        case "updateCash":{
+                            MainCommand.getUserId();
+                            MainCommand.updateUserCash();
+                            break;
+                        }
                         case "back": {
                             menu = "back";
                             break;
@@ -207,7 +217,7 @@ public class MonoThreadClientHandler implements Runnable {
                 }
                 else break;
             }
-        } catch (IOException | SQLException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

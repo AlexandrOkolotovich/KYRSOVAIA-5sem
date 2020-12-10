@@ -444,8 +444,7 @@ public class DataBaseHandler extends Configs {
 
     public void addOrder(Order order){
         String insert = "INSERT " + Const.ORDER_TABLE + "(" + Const.ORDER_USERS_ID + "," + Const.ORDER_TICKET_ID + "," +
-                Const.ORDER_PAID + "," + Const.ORDER_BRON + ") " +
-                "VALUES(?,?,?,?)";
+                Const.ORDER_PAID + "," + Const.ORDER_BRON + ") " + "VALUES(?,?,?,?)";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
@@ -485,9 +484,6 @@ public class DataBaseHandler extends Configs {
                 ticket.setRowNumber(rs.getInt(3));
                 ticket.setPlaceNumber(rs.getInt(4));
 
-               // prSt.setInt(1, ticketScheduleId);
-
-
                 ticketJson = new JSONObject();
                 ticketJson.put("idticket", ticket.getIdticket());
                 ticketJson.put("schedule_idschedule", ticket.getSchedule_idschedule());
@@ -502,4 +498,57 @@ public class DataBaseHandler extends Configs {
 
         return tickets.toString();
     }
+
+    public void openCashAccount(int userId, int cash){
+        String insert = "INSERT " + Const.SOLVENCY_TABLE + "(" + Const.SOLVENCY_USERS_ID + "," + Const.SOLVENCY_CASH + ") " +
+                "VALUES(?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+
+            prSt.setInt(1, userId);
+            prSt.setInt(2, cash);
+
+            prSt.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    public ResultSet getUserCash(int userId){
+        ResultSet resSet = null;
+
+        String select = "SELECT * FROM " + Const.SOLVENCY_TABLE + " WHERE " + Const.SOLVENCY_USERS_ID + "= ?";
+
+        try {
+            PreparedStatement prSt  =  getDbConnection().prepareStatement(select);
+
+            prSt.setInt(1, userId);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return resSet;
+    }
+
+    public void updateBalance(Solvency solvency) throws SQLException, ClassNotFoundException {
+        String update = "UPDATE " + Const.SOLVENCY_TABLE + " SET " + Const.SOLVENCY_CASH +
+                "=? " + "WHERE " + Const.SOLVENCY_USERS_ID + " = ?";
+
+        PreparedStatement prSt = getDbConnection().prepareStatement(update);
+
+        prSt.setDouble(1, solvency.getCash());
+        prSt.setInt(2, solvency.getUsers_id());
+
+        prSt.executeUpdate();
+        prSt.close();
+    }
+
+
 }

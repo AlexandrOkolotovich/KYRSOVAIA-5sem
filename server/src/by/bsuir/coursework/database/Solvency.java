@@ -11,6 +11,11 @@ public class Solvency {
         this.cash = cash;
     }
 
+    public Solvency(int users_id, double cash) {
+        this.users_id = users_id;
+        this.cash = cash;
+    }
+
     public int getIdsolvency() {
         return idsolvency;
     }

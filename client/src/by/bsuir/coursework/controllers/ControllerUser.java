@@ -2,9 +2,11 @@ package by.bsuir.coursework.controllers;
 
 import by.bsuir.coursework.collections.*;
 import by.bsuir.coursework.connection.Connect;
+import com.sun.glass.ui.View;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +27,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControllerUser {
     @FXML
@@ -91,7 +95,7 @@ public class ControllerUser {
     private Label dateTime;
 
     @FXML
-    private Label moneyUser;
+    protected Label moneyUser;
 
     @FXML
     private Label dateTime11;
@@ -460,6 +464,15 @@ public class ControllerUser {
     private Pane ticketPane;
 
     @FXML
+    private Button topUpButton;
+
+    @FXML
+    private TextField inputCash;
+
+    @FXML
+    private Pane topUpPane;
+
+    @FXML
     void initialize() {
 
         initClock();
@@ -467,6 +480,7 @@ public class ControllerUser {
         initCinemaInfo();
         movieInTable();
         scheduleInTable();
+        initCash();
 
         closeButton.setOnMouseClicked(mouseEvent -> {
             Stage stages = (Stage) closeButton.getScene().getWindow();
@@ -501,6 +515,16 @@ public class ControllerUser {
             stage.show();
         });
 
+    }
+
+    private void initCash(){
+        Connect.send(userLoginName);
+        String iduser = Connect.get();
+        Connect.send(iduser);
+
+        String cash = Connect.get();
+
+        moneyUser.setText(cash);
     }
 
     private void initClock() {
@@ -629,7 +653,6 @@ public class ControllerUser {
                         || schedule.getSessionTime().toString().toLowerCase().contains(newVal)
                         || schedule.getSessionDate().toString().toLowerCase().contains(newVal);
 
-
             });
             scheduleTable.setItems(filterSchedule);
         });
@@ -641,8 +664,428 @@ public class ControllerUser {
 
         Connect.send("occupedPlaces");
 
-
         ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
+
+        int ids = selectedSchedule.getIdschedule();
+        String scheduleid = String.valueOf(ids);
+
+        Connect.send(scheduleid);
+        CollectionTicket.getInstance().fillData();
+        ObservableList<TicketInf> ticket = CollectionTicket.getInstance().getTickets();
+
+        for(TicketInf t: ticket){
+            int rowNumber = t.getRowNumber();
+            int placeNumber = t.getPlaceNumber();
+
+            switch (rowNumber){
+                case 1:{
+                    switch (placeNumber){
+                        case 1:{
+                            s11.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s12.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s13.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s14.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s15.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s16.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s17.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s18.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s19.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s110.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 2:{
+                    switch (placeNumber){
+                        case 1:{
+                            s21.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s22.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s23.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s24.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s25.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s26.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s27.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s28.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s29.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s210.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 3:{
+                    switch (placeNumber){
+                        case 1:{
+                            s31.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s32.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s33.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s34.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s35.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s36.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s37.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s38.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s39.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s310.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 4:{
+                    switch (placeNumber){
+                        case 1:{
+                            s41.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s42.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s43.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s44.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s45.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s46.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s47.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s48.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s49.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s410.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+
+                }
+                case 5:{
+                    switch (placeNumber){
+                        case 1:{
+                            s51.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s52.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s53.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s54.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s55.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s56.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s57.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s58.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s59.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s510.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 6:{
+                    switch (placeNumber){
+                        case 1:{
+                            s61.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s62.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s63.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s64.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s65.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s66.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s67.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s68.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s69.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s610.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 7:{
+                    switch (placeNumber){
+                        case 1:{
+                            s71.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s72.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s73.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s74.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s75.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s76.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s77.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s78.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s79.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s710.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 8:{
+                    switch (placeNumber){
+                        case 1:{
+                            s81.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s82.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s83.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s84.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s85.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s86.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s87.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s88.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s89.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s810.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 9:{
+                    switch (placeNumber){
+                        case 1:{
+                            s91.setDisable(true);
+                            break;
+                        }
+                        case 2:{
+                            s92.setDisable(true);
+                            break;
+                        }
+                        case 3:{
+                            s93.setDisable(true);
+                            break;
+                        }
+                        case 4:{
+                            s94.setDisable(true);
+                            break;
+                        }
+                        case 5:{
+                            s95.setDisable(true);
+                            break;
+                        }
+                        case 6:{
+                            s96.setDisable(true);
+                            break;
+                        }
+                        case 7:{
+                            s97.setDisable(true);
+                            break;
+                        }
+                        case 8:{
+                            s98.setDisable(true);
+                            break;
+                        }
+                        case 9:{
+                            s99.setDisable(true);
+                            break;
+                        }
+                        case 10:{
+                            s910.setDisable(true);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
 
         movieTitleText.setText(selectedSchedule.getMovieTitle());
         sessionPriceText.setText(selectedSchedule.getPrice().toString());
@@ -656,6 +1099,7 @@ public class ControllerUser {
 
     @FXML
     void seatSelection(ActionEvent event) {
+
         if(event.getSource()==s11){
             row = 1;
             place = 1;
@@ -1038,13 +1482,7 @@ public class ControllerUser {
         String paid = "Нет";
         String bron = "Да";
 
-        Connect.send("buyTicket");
-
-        ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
-        Integer idschedule = selectedSchedule.getIdschedule();
-        Connect.send(idschedule);
-        Connect.send(row);
-        Connect.send(place);
+        bTicket();
 
         String idticket = Connect.get();
 
@@ -1058,5 +1496,101 @@ public class ControllerUser {
         Connect.send(idticket);
         Connect.send(paid);
         Connect.send(bron);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Успех");
+        alert.setHeaderText("Вы забронировали место!\nОплатить билет вы можете на кассе!");
+        alert.showAndWait();
     }
+
+    @FXML
+    void payTicket(ActionEvent event) {
+        String paid = "Да";
+        String bron = "Нет";
+
+        bTicket();
+
+        String idticket = Connect.get();
+
+        Connect.send("getUserId");
+        Connect.send(userLoginName);
+
+        String iduser = Connect.get();
+
+        Connect.send("paidOrder");
+        Connect.send(iduser);
+        Connect.send(idticket);
+        Connect.send(paid);
+        Connect.send(bron);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Успех");
+        alert.setHeaderText("Вы оплатили билет!");
+        alert.showAndWait();
+    }
+
+    void bTicket(){
+        Connect.send("buyTicket");
+
+        ScheduleInf selectedSchedule = (ScheduleInf) scheduleTable.getSelectionModel().getSelectedItem();
+        Integer idschedule = selectedSchedule.getIdschedule();
+        Connect.send(idschedule);
+        Connect.send(row);
+        Connect.send(place);
+    }
+
+
+    @FXML
+    void topUpAccount(ActionEvent event) throws IOException {
+        topUpPane.toFront();
+
+    }
+
+    @FXML
+    void topUpBalance(ActionEvent event) {
+        boolean key = true;
+        String alertString = "";
+        String inpCash = inputCash.getText();
+
+        Connect.send("updateCash");
+        Connect.send(userLoginName);
+        String iduser = Connect.get();
+        Connect.send(iduser);
+
+        if (inpCash.isEmpty()  || inpCash.length() > 8 || !validatePrice(inpCash)) {
+            key = false;
+            alertString+= "Неверный ввод количеста денег!\nПравильный формат 0.0\n";
+        }
+        if(key){
+            Connect.send(inpCash);
+            String newCash = Connect.get();
+            System.out.println(newCash);
+            moneyUser.setText(newCash);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Успех");
+            alert.setHeaderText("Счёт пополен!");
+            alert.showAndWait();
+
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(alertString);
+            alert.showAndWait();
+        }
+    }
+
+    private boolean validatePrice(String source) {
+        Pattern pattern = Pattern.compile("^[0-9]+\\.[0-9]{1,2}$");
+        Matcher matcher = pattern.matcher(source);
+
+        if (!matcher.matches()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
 }

@@ -9,7 +9,6 @@ import org.json.JSONObject;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Comparator;
 
 public final class CollectionSchedule {
     private ObservableList<ScheduleInf> schedules = FXCollections.observableArrayList();
@@ -32,7 +31,7 @@ public final class CollectionSchedule {
         Integer idschedule = Integer.valueOf(id);
         String movieDate = Connect.get();
         Date sessionDate = Date.valueOf(movieDate);
-        String movieTime = Connect.get();//если будет время попробовать удалить секунды
+        String movieTime = Connect.get();
         Time sessionTime = Time.valueOf(movieTime);
         String movieTitle = Connect.get();
         String genre = Connect.get();
@@ -68,7 +67,6 @@ public final class CollectionSchedule {
                     Double price = object.getDouble("price");
                     ScheduleInf schedule = new ScheduleInf(idschedule, sessionDate, sessionTime, movieTitle, genre, format, age, price);
                     schedules.add(schedule);
-
                 }
             }
         } catch (JSONException e) {
