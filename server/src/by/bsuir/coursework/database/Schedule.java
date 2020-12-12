@@ -1,11 +1,12 @@
 package by.bsuir.coursework.database;
 
+import by.bsuir.coursework.Copyable;
+
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Calendar;
-import java.util.TimeZone;
 
-public class Schedule {
+
+public class Schedule implements Copyable {
     private int idschedule;
     private int movie_idmovie;
     private Date sessionDate;
@@ -19,6 +20,12 @@ public class Schedule {
         this.sessionDate = sessionDate;
         this.sessionTime = sessionTime;
         this.format = format;
+        this.price = price;
+    }
+
+    public Schedule(int idschedule, Date sessionDate, double price) {
+        this.idschedule = idschedule;
+        this.sessionDate = sessionDate;
         this.price = price;
     }
 
@@ -79,5 +86,10 @@ public class Schedule {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public Copyable copy() {
+        return new Schedule(idschedule, sessionDate, price);
     }
 }

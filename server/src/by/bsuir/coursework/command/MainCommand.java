@@ -2,6 +2,8 @@ package by.bsuir.coursework.command;
 
 import by.bsuir.coursework.connection.MonoThreadClientHandler;
 import by.bsuir.coursework.database.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -9,6 +11,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class MainCommand extends MonoThreadClientHandler {
@@ -338,6 +341,7 @@ public abstract class MainCommand extends MonoThreadClientHandler {
         cash = result.getDouble(3);
 
         String newCash = get();
+        System.out.println(newCash);
         double newcash = Double.parseDouble(newCash);
 
         if(cash>=newcash) {
@@ -357,5 +361,96 @@ public abstract class MainCommand extends MonoThreadClientHandler {
 
 
     }
+
+    public static void updateAdminCash() throws SQLException, ClassNotFoundException {
+        DataBaseHandler handler = new DataBaseHandler();
+
+        int userid = 1;
+        double cash;
+
+        ResultSet result = handler.getUserCash(userid);
+
+        cash = result.getDouble(3);
+
+        String newCash = get();
+        double newcash = Double.parseDouble(newCash);
+
+        cash += newcash;
+
+        Solvency solvency = new Solvency(userid, cash);
+
+        handler.updateBalance(solvency);
+
+    }
+
+    public static void countOccupiedPl() throws SQLException, IOException {
+        String ids = get();
+        int scheduleid = Integer.parseInt(ids);
+
+
+
+        DataBaseHandler handler = new DataBaseHandler();
+        ResultSet resultSet = handler.countOccupiedPlaces(scheduleid);
+
+        int colPlaces = resultSet.getInt(1);
+        String colPl = String.valueOf(colPlaces);
+        send(colPl);
+    }
+
+    public static void calculateCloses() throws SQLException, IOException {
+        DataBaseHandler handler = new DataBaseHandler();
+        ArrayList<Schedule> schedules = new ArrayList<>();
+
+        String array = handler.getSchedule();
+
+        JSONArray newArray = null;
+        if (array != null) {
+            newArray = new JSONArray(array);
+            int count = newArray.length();
+            for(int i = 0; i<count; i++) {
+                JSONObject object = newArray.getJSONObject(i);
+                int idschedule = object.getInt("idschedule");
+                String movieDate = object.getString( "sessionDate" );
+                Date sessionDate = Date.valueOf(movieDate);
+                String movieTime = object.getString( "sessionTime");
+                Time sessionTime = Time.valueOf(movieTime);
+                String movieTitle = object.getString( "movieTitle" );
+                String genre = object.getString( "genre" );
+                String format = object.getString( "format" );
+                String age = object.getString("age");
+                Double price = object.getDouble("price");
+                Schedule schedule = new Schedule(idschedule, sessionDate, price);
+                Schedule clone = (Schedule) schedule.copy();
+                schedules.add(clone);
+            }
+        }
+
+        for(Schedule s: schedules){
+            double damages;
+
+            int ids = s.getIdschedule();
+            Date date = s.getSessionDate();
+            double price = s.getPrice();
+
+            ResultSet resultSet = handler.countOccupiedPlaces(ids);
+
+            int colPlaces = resultSet.getInt(1);
+
+            damages = price * colPlaces;
+
+            if(damages==0){
+                damages = price * 90;
+            }
+
+            String dateForChart = String.valueOf(date);
+            String damagesForChart = String.valueOf(damages);
+
+            send("runChart");
+            send(dateForChart);
+            send(damagesForChart);
+        }
+        send("stopChartInfo");
+    }
+
 
 }

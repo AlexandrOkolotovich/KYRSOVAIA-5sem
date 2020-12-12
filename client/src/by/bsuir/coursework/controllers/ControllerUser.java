@@ -1525,17 +1525,19 @@ public class ControllerUser {
         Connect.send(price);
 
         String newCash = Connect.get();
+        Connect.send(price);
 
         if(newCash.equals("wrong")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
             alert.setHeaderText("Недостаточно денег на счету!");
             alert.showAndWait();
-            userPane.toFront();
         }
         else {
             System.out.println(newCash);
             moneyUser.setText(newCash);
+
+            //bTicket();
 
             Connect.send("makeOrder");
             Connect.send(iduser);
@@ -1547,8 +1549,8 @@ public class ControllerUser {
             alert.setTitle("Успех");
             alert.setHeaderText("Вы оплатили билет!");
             alert.showAndWait();
-            userPane.toFront();
         }
+        userPane.toFront();
     }
 
     void bTicket(){

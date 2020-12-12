@@ -78,7 +78,4 @@ public final class CollectionSchedule {
         schedules.remove(schedule);
     }
 
-    public void chooseMovie(ScheduleInf schedule){
-
-    }
 }

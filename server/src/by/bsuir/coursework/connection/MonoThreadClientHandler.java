@@ -42,9 +42,12 @@ public class MonoThreadClientHandler implements Runnable {
     @Override
     public void run() {
         try{
+            String start = get();
+            System.out.println(start);
 
             while (true) {
                 String role = null;
+
 
                 String command = get();
                 System.out.println("Я принял: " + command);
@@ -58,7 +61,7 @@ public class MonoThreadClientHandler implements Runnable {
                     }
                     case "registration":{
                         BasicCommand.registration();
-                        role = "USER";
+                        role = "null";
                         break;
                     }
                     case "loginExist":{
@@ -69,6 +72,11 @@ public class MonoThreadClientHandler implements Runnable {
                     case "passwordRecovery":{
                         BasicCommand.passwordRecovery();
                         role = "null";
+                        break;
+                    }
+                    case "getUserInfo":{
+                        BasicCommand.getInfo();
+                        role = "USER";
                         break;
                     }
                 }
@@ -108,6 +116,8 @@ public class MonoThreadClientHandler implements Runnable {
             MainCommand.sendCinemaInfo();
             MainCommand.sendMoviesData();
             MainCommand.sendScheduleData();
+            MainCommand.getUserId();
+            MainCommand.getUserCash();
 
             while (!Objects.equals(menu, "back")) {
                 menu = get();
@@ -151,6 +161,15 @@ public class MonoThreadClientHandler implements Runnable {
                             MainCommand.deleteSchedule();
                             break;
                         }
+                        case "occupedPlaces":{
+                            MainCommand.getOccupedPlaces();
+                            MainCommand.countOccupiedPl();
+                            break;
+                        }
+                        case "calculateCloses":{
+                            MainCommand.calculateCloses();
+                            break;
+                        }
                         case "back": {
                             menu = "back";
                             break;
@@ -170,7 +189,6 @@ public class MonoThreadClientHandler implements Runnable {
 
         try {
 
-         //   AdminCommand.sendUsersData();
             MainCommand.sendCinemaInfo();
             MainCommand.sendMoviesData();
             MainCommand.sendScheduleData();
@@ -202,6 +220,7 @@ public class MonoThreadClientHandler implements Runnable {
                         }
                         case "pay":{
                             MainCommand.updateUserCash();
+                            MainCommand.updateAdminCash();
                             break;
                         }
                         case "updateCash":{

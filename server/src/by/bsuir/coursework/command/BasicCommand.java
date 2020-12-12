@@ -61,7 +61,7 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
         return role;
     }
 
-    public static void registration() {
+    public static void registration() throws IOException {
         String user;
 
         user = get();
@@ -81,6 +81,7 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
             handler.signUpUser(surname, name, login, tel, email, password, role);
 
             ResultSet result = handler.getUser(login);
+
             String userId = null;
             int counter = 0;
 
@@ -97,9 +98,39 @@ public abstract class BasicCommand extends MonoThreadClientHandler {
                 int uid = Integer.parseInt(userId);
 
                 handler.openCashAccount(uid, 0);
+
             }
 
 
+        }
+    }
+
+    public static void getInfo() throws IOException {
+        DataBaseHandler handler = new DataBaseHandler();
+
+        String login = get();
+        String userTel = null;
+        String userEmail = null;
+
+        ResultSet result = handler.getUser(login);
+
+        int counter = 0;
+
+        try {
+            while (result.next()) {
+                counter++;
+                login = result.getNString(4);
+                userTel = result.getNString(5);
+                userEmail = result.getNString(6);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        if(counter>=1){
+            send(login);
+            send(userEmail);
+            send(userTel);
         }
     }
 

@@ -550,5 +550,27 @@ public class DataBaseHandler extends Configs {
         prSt.close();
     }
 
+    public ResultSet countOccupiedPlaces(int idschedule){
+        ResultSet resSet = null;
+
+        String select = "SELECT COUNT(*) FROM " + Const.TICKET_TABLE + " WHERE " + Const.TICKET_SCHEDULE_ID + " =?;";
+
+        try {
+            PreparedStatement prSt  =  getDbConnection().prepareStatement(select);
+
+            prSt.setInt(1, idschedule);
+
+            resSet = prSt.executeQuery();
+
+            resSet.next();
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+
+        return resSet;
+
+    }
+
 
 }

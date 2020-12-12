@@ -190,6 +190,7 @@ public class ControllerAuthorization {
     void signUp(ActionEvent event) throws IOException {
 
         boolean key = true;
+        String alertText = "";
 
         String surname = signUpSurname.getText();
         String name = signUpName.getText();
@@ -201,35 +202,44 @@ public class ControllerAuthorization {
 
         if (surname.isEmpty() || surname.length() < 2 || surname.length() > 12 || !checkName(surname)) {
             key = false;
+            alertText = "Ошибка при вводе фамилии!\n";
         }
         if (name.isEmpty() || name.length() < 2 || name.length() > 12 || !checkName(name)) {
             key = false;
+            alertText = "Ошибка при вводе имени!\n";
         }
         if (login.isEmpty() || login.length() < 4 || login.length() > 12 || !checkUserName(login) ||
             loginExist(login)) {
             key = false;
+            alertText = "Ошибка при вводе логина!\n";
         }
         if (tel.isEmpty() || tel.length() < 12 || tel.length() > 14 || !checkTel(tel)) {
             key = false;
+            alertText = "Ошибка при вводе номера телефона!\n";
         }
         if (email.isEmpty() || email.length() < 4 || email.length() > 32 || !checkMail(email)) {
             key = false;
+            alertText = "Ошибка при вводе электронной почты!\n";
         }
         if (password.isEmpty() || password.length() < 4 || password.length() > 12) {
             key = false;
+            alertText = "Ошибка при вводе пароля!\n";
         }
         if (!repass.equals(password)){
             key = false;
+            alertText = "Пароли не совпадают!\n";
         }
         if(key){
             Connect.send("registration");
             User user = new User(surname, name, login, tel, email, password, Role.USER);
             Connect.send(user);
+            Connect.send("getUserInfo");
+            Connect.send(login);
             openScene("/by/bsuir/coursework/view/sceneUser.fxml");
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
-            alert.setHeaderText("Пользователь не зарегистрирован!");
+            alert.setHeaderText(alertText);
             alert.showAndWait();
         }
 
@@ -291,6 +301,7 @@ public class ControllerAuthorization {
 
     @FXML
     void initialize() {
+        Connect.send("start");
 
         errorText.setVisible(false);
 
