@@ -342,9 +342,10 @@ public abstract class MainCommand extends MonoThreadClientHandler {
 
         String newCash = get();
         System.out.println(newCash);
-        double newcash = Double.parseDouble(newCash);
+        if (newCash.contains(".")) {
+            double newcash = Double.parseDouble(newCash);
 
-        if(cash>=newcash) {
+            /*   if(cash>=newcash) {*/
 
             cash += newcash;
 
@@ -355,9 +356,10 @@ public abstract class MainCommand extends MonoThreadClientHandler {
             String upCash = String.valueOf(cash);
             send(upCash);
         }
+      /*  }
         else {
             send("wrong");
-        }
+        }*/
 
 
     }

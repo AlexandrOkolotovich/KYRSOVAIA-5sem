@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="server:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/server_jar</output-path>
+    <root id="archive" name="server.jar">
+      <element id="module-output" name="server" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jar_files/activation.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mail-6.0.0-sources" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jar_files/javax.mail.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jar_files/json-20190722.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jar_files/pop3.jar" path-in-jar="/" />
+      <element id="library" level="project" name="smtp-1.4.2-sources" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../soft/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jar_files/java-mail-1.4.4.jar" path-in-jar="/" />
+      <element id="library" level="project" name="activation" />
+      <element id="library" level="project" name="java-mail-1.4.4" />
+      <element id="library" level="project" name="javax.mail" />
+      <element id="library" level="project" name="json-20190722" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.19" />
+      <element id="library" level="project" name="pop3" />
+    </root>
+  </artifact>
+</component>

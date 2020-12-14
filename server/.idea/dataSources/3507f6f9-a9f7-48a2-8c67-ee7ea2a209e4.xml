@@ -1015,7 +1015,7 @@ APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTI
       <Position>10</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>0</DefaultExpression>
+      <DefaultExpression>10</DefaultExpression>
     </column>
     <index id="313" parent="289" name="idmovie_UNIQUE">
       <ColNames>idmovie</ColNames>

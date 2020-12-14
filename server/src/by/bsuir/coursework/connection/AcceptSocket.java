@@ -20,7 +20,7 @@ public class AcceptSocket implements Runnable {
             while (!server.isClosed()) {
                 Socket client = server.accept();
                 executeIt.execute(new MonoThreadClientHandler(client));
-                System.out.println("Connection accepted.");
+                System.out.println("Connection accepted./Соединение подтверждено");
             }
             // закрытие пула нитей после завершения работы всех нитей
             executeIt.shutdown();

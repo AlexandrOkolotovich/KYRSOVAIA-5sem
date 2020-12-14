@@ -101,7 +101,7 @@ public class MonoThreadClientHandler implements Runnable {
             ois.close();
             clientDialog.close();
 
-            System.out.println("Closing connections & channels - DONE.");
+            System.out.println("Closing connections & channels - DONE.\n Закрытие связи");
         } catch (IOException e) {
             e.printStackTrace();
         }
